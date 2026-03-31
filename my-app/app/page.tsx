@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
-  const [activeSection, setActiveSection] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -17,292 +16,67 @@ export default function Home() {
       id: "IT22889324",
       name: "Udayakumara W.D.L.",
       role: "Stage-Based Disease & Pest Detection",
-      desc: "CNN-based deep learning system that detects cinnamon plant diseases and pests with stage-aware classification and actionable mobile recommendations.",
-      tech: ["TensorFlow", "OpenCV", "FastAPI", "PostgreSQL", "React Native"],
-      accuracy: "85–95%",
-      color: "#4a7c59",
-      icon: "🔬",
+      image: "/assets/Udayakumara.png",
     },
     {
       id: "IT22319692",
       name: "N. A. D. Nimsara",
       role: "Fertilizer Recommendation System",
-      desc: "Dual-image ML system analyzing both leaf and soil photographs to recommend precise fertilizer applications, eliminating guesswork and costly lab tests.",
-      tech: ["TensorFlow", "OpenCV", "FastAPI", "PostgreSQL", "React Native"],
-      accuracy: "75–90%",
-      color: "#3d6b4f",
-      icon: "🌱",
+      image: "/assets/Nimsara.png",
     },
     {
       id: "IT22308498",
       name: "Jayawardana N.G.U.D.",
       role: "Yield Prediction & Weather Support",
-      desc: "Personalized ML model trained on historical yield data combined with real-time weather integration for plot-specific, growth-stage aware farm advisories.",
-      tech: ["Scikit-learn", "OpenWeatherMap", "FastAPI", "PostgreSQL", "React Native"],
-      accuracy: "70–85%",
-      color: "#2d5a3d",
-      icon: "🌦️",
+      image: "/assets/Jayawardana.png",
     },
     {
       id: "IT22312044",
       name: "Malmi W.U.",
       role: "Oil Yield Prediction & Distillation Support",
-      desc: "XGBoost-powered prediction engine for cinnamon oil yield with dynamic drying and distillation time estimation to maximize extraction efficiency.",
-      tech: ["XGBoost", "FastAPI", "Docker", "PostgreSQL", "React Native"],
-      accuracy: "70–85%",
-      color: "#1e4a2e",
-      icon: "⚗️",
+      image: "/assets/Malmi.png",
     },
   ];
 
   const features = [
     {
-      icon: "🧪",
       title: "Smart Fertilizer",
       desc: "ML-driven fertilizer suggestions from soil & leaf images combined, tailored specifically for cinnamon",
     },
     {
-      icon: "🌿",
       title: "Disease Detection",
       desc: "Stage-based image classification for cinnamon leaves & bark with actionable pest and disease recommendations",
     },
     {
-      icon: "📊",
       title: "Yield Prediction",
       desc: "Real-time weather integration with plot and plant stage based advisories backed by historical yield data",
     },
     {
-      icon: "💧",
       title: "Oil Production",
       desc: "ML-driven prediction of cinnamon oil yield with dynamic estimation of optimal drying and distillation time",
     },
   ];
 
-  // Documentation / Research UI state + data
-  const [activePhase, setActivePhase] = useState("proposal");
-
-  const phases = [
-    { id: "proposal", label: "Proposal", icon: "📋" },
-    { id: "progress1", label: "Progress Review I", icon: "🔍" },
-    { id: "progress2", label: "Progress Review II", icon: "⚙️" },
-    { id: "final", label: "Final Presentation", icon: "🎓" },
-    { id: "papers", label: "Research Papers", icon: "📄" },
+  const milestones = [
+    { month: "September 2024", title: "Project Proposal", desc: "Problem identification, literature review, and system design.", side: "left" },
+    { month: "December 2024", title: "Progress Presentation I", desc: "Data collection and initial model development.", side: "right" },
+    { month: "March 2025", title: "Progress Presentation II", desc: "Model training, validation, and integration testing.", side: "left" },
+    { month: "March 2025", title: "Research Paper Submission", desc: "Individual contributions to cinnamon-focused AI research.", side: "right" },
+    { month: "April 2025", title: "Final Report", desc: "Comprehensive evaluation of system performance and findings.", side: "left" },
+    { month: "May 2025", title: "Final Presentation and Viva", desc: "Individual and group assessment.", side: "right" },
+    { month: "May 2025", title: "Website Assessment", desc: "Public research dissemination.", side: "left" },
+    { month: "June 2025", title: "Logbook Submission", desc: "Project documentation and progress validation.", side: "right" },
   ];
 
-  const timeline = [
-    { icon: "💡", label: "Proposal", sub: "Problem & solution defined" },
-    { icon: "🔬", label: "Progress I", sub: "Data collection & model design" },
-    { icon: "⚙️", label: "Progress II", sub: "Model training & integration" },
-    { icon: "📱", label: "Final", sub: "Full system demo & evaluation" },
+  const documents = [
+    { title: "Project Proposal", href: "#" },
+    { title: "Checklist 1", href: "https://drive.google.com/drive/folders/1mCAk48nYa5FuWk9TTrsDD0mohRL5en0j?usp=sharing" },
+    { title: "Progress Presentation - 1", href: "https://docs.google.com/presentation/d/1OVgnjAQvKdpIQSpeOWP39mOmEBx68j6U/edit?usp=sharing&ouid=107772606799815702297&rtpof=true&sd=true" },
+    { title: "Research Paper", href: "#" },
+    { title: "Progress Presentation - 2", href: "#" },
+    { title: "Final Report & Presentation", href: "#" },
+    { title: "Checklist 2", href: "#" },
   ];
-
-  type DocType = {
-    icon: string;
-    type: string;
-    typeLabel: string;
-    title: string;
-    author: string;
-    desc: string;
-    link: string;
-    linkLabel: string;
-  };
-
-  type DocsMap = {
-    [key: string]: DocType[];
-  };
-
-  const docs: DocsMap = {
-    proposal: [
-      {
-        icon: "📋",
-        type: "slides",
-        typeLabel: "Slides",
-        title: "CinoGrow – Project Proposal Presentation",
-        author: "Group 25-26J-338 · All Members",
-        desc: "Full group proposal covering problem statement, objectives, system architecture overview, and research scope for all four modules.",
-        link: "https://drive.google.com/file/d/demo-proposal-group",
-        linkLabel: "View Slides",
-      },
-      {
-        icon: "📄",
-        type: "report",
-        typeLabel: "Report",
-        title: "Project Proposal Report",
-        author: "Group 25-26J-338 · All Members",
-        desc: "Written proposal document detailing literature review, research gaps, methodology, and ethical clearance plan.",
-        link: "https://drive.google.com/file/d/demo-proposal-report",
-        linkLabel: "View Report",
-      },
-    ],
-    progress1: [
-      {
-        icon: "🔍",
-        type: "slides",
-        typeLabel: "Slides",
-        title: "Progress Review I – Group Presentation",
-        author: "Group 25-26J-338 · All Members",
-        desc: "Overview of data collection progress, initial ML model experiments, and system architecture updates across all four modules.",
-        link: "https://drive.google.com/file/d/demo-progress1-group",
-        linkLabel: "View Slides",
-      },
-      {
-        icon: "🌱",
-        type: "slides",
-        typeLabel: "Slides",
-        title: "Fertilizer Recommendation – Progress I",
-        author: "N. A. D. Nimsara · IT22319692",
-        desc: "Dataset preparation, CNN architecture selection, and initial leaf & soil image classification results.",
-        link: "https://drive.google.com/file/d/demo-progress1-nimsara",
-        linkLabel: "View Slides",
-      },
-      {
-        icon: "🌦️",
-        type: "slides",
-        typeLabel: "Slides",
-        title: "Yield Prediction & Weather – Progress I",
-        author: "Jayawardana N.G.U.D. · IT22308498",
-        desc: "Historical yield data analysis, weather API integration plan, and initial regression model benchmarks.",
-        link: "https://drive.google.com/file/d/demo-progress1-jayawardana",
-        linkLabel: "View Slides",
-      },
-      {
-        icon: "⚗️",
-        type: "slides",
-        typeLabel: "Slides",
-        title: "Oil Yield Prediction – Progress I",
-        author: "Malmi W.U. · IT22312044",
-        desc: "Farm-level oil yield data collection approach, XGBoost baseline experiments, and drying time estimation logic.",
-        link: "https://drive.google.com/file/d/demo-progress1-malmi",
-        linkLabel: "View Slides",
-      },
-      {
-        icon: "🔬",
-        type: "slides",
-        typeLabel: "Slides",
-        title: "Disease & Pest Detection – Progress I",
-        author: "Udayakumara W.D.L. · IT22889324",
-        desc: "Cinnamon leaf and bark image dataset curation, labeling strategy, and initial CNN training results.",
-        link: "https://drive.google.com/file/d/demo-progress1-udaya",
-        linkLabel: "View Slides",
-      },
-    ],
-    progress2: [
-      {
-        icon: "⚙️",
-        type: "slides",
-        typeLabel: "Slides",
-        title: "Progress Review II – Group Presentation",
-        author: "Group 25-26J-338 · All Members",
-        desc: "Integrated system demo, inter-module API connections, model accuracy updates, and mobile app prototype walkthrough.",
-        link: "https://drive.google.com/file/d/demo-progress2-group",
-        linkLabel: "View Slides",
-      },
-      {
-        icon: "🌱",
-        type: "slides",
-        typeLabel: "Slides",
-        title: "Fertilizer Recommendation – Progress II",
-        author: "N. A. D. Nimsara · IT22319692",
-        desc: "Dual-image CNN model training results, fertilizer rules engine implementation, and mobile UI prototype.",
-        link: "https://drive.google.com/file/d/demo-progress2-nimsara",
-        linkLabel: "View Slides",
-      },
-      {
-        icon: "🌦️",
-        type: "slides",
-        typeLabel: "Slides",
-        title: "Yield Prediction & Weather – Progress II",
-        author: "Jayawardana N.G.U.D. · IT22308498",
-        desc: "LSTM/XGBoost yield model accuracy results, plot-wise recommendation engine, and weather advisory system demo.",
-        link: "https://drive.google.com/file/d/demo-progress2-jayawardana",
-        linkLabel: "View Slides",
-      },
-      {
-        icon: "⚗️",
-        type: "slides",
-        typeLabel: "Slides",
-        title: "Oil Yield Prediction – Progress II",
-        author: "Malmi W.U. · IT22312044",
-        desc: "XGBoost model evaluation, drying & distillation time estimation accuracy, and real-time dashboard prototype.",
-        link: "https://drive.google.com/file/d/demo-progress2-malmi",
-        linkLabel: "View Slides",
-      },
-      {
-        icon: "🔬",
-        type: "slides",
-        typeLabel: "Slides",
-        title: "Disease & Pest Detection – Progress II",
-        author: "Udayakumara W.D.L. · IT22889324",
-        desc: "Stage-aware CNN classification results, severity mapping implementation, and recommendation database integration.",
-        link: "https://drive.google.com/file/d/demo-progress2-udaya",
-        linkLabel: "View Slides",
-      },
-    ],
-    final: [
-      {
-        icon: "🎓",
-        type: "slides",
-        typeLabel: "Slides",
-        title: "CinoGrow – Final Presentation",
-        author: "Group 25-26J-338 · All Members",
-        desc: "Complete system demonstration, all model evaluation results, commercialization plan, and live mobile app showcase.",
-        link: "https://drive.google.com/file/d/demo-final-group",
-        linkLabel: "View Slides",
-      },
-      {
-        icon: "📖",
-        type: "report",
-        typeLabel: "Report",
-        title: "Final Project Report",
-        author: "Group 25-26J-338 · All Members",
-        desc: "Comprehensive written report covering all modules, system architecture, experimental results, and future work.",
-        link: "https://drive.google.com/file/d/demo-final-report",
-        linkLabel: "View Report",
-      },
-    ],
-    papers: [
-      {
-        icon: "📄",
-        type: "paper",
-        typeLabel: "Paper",
-        title: "Cinnamon Oil Yield Prediction Using XGBoost",
-        author: "Malmi W.U. · IT22312044",
-        desc: "ML-driven oil yield prediction with dynamic drying and distillation time estimation for Sri Lankan cinnamon producers.",
-        link: "https://drive.google.com/file/d/demo-paper-malmi",
-        linkLabel: "View Paper",
-      },
-      {
-        icon: "📄",
-        type: "paper",
-        typeLabel: "Paper",
-        title: "Fertilizer Recommendation from Leaf & Soil Images",
-        author: "N. A. D. Nimsara · IT22319692",
-        desc: "First dual-image CNN approach for cinnamon-specific nutrient deficiency detection and precision fertilizer recommendations.",
-        link: "https://drive.google.com/file/d/demo-paper-nimsara",
-        linkLabel: "View Paper",
-      },
-      {
-        icon: "📄",
-        type: "paper",
-        typeLabel: "Paper",
-        title: "Cinnamon Yield Prediction & Weather-Based Farm Support",
-        author: "Jayawardana N.G.U.D. · IT22308498",
-        desc: "Personalized ML model combining historical yield records with real-time weather data for plot-wise, stage-specific farm advisories.",
-        link: "https://drive.google.com/file/d/demo-paper-jayawardana",
-        linkLabel: "View Paper",
-      },
-      {
-        icon: "📄",
-        type: "paper",
-        typeLabel: "Paper",
-        title: "Stage-Based Detection of Cinnamon Diseases & Pests",
-        author: "Udayakumara W.D.L. · IT22889324",
-        desc: "Deep learning CNN system for stage-aware identification of cinnamon plant diseases and pests with actionable treatment recommendations.",
-        link: "https://drive.google.com/file/d/demo-paper-udaya",
-        linkLabel: "View Paper",
-      },
-    ],
-  };
 
   return (
     <>
@@ -333,7 +107,7 @@ export default function Home() {
           overflow-x: hidden;
         }
 
-        /* NAV */
+        /* ── NAV ── */
         nav {
           position: fixed;
           top: 0; left: 0; right: 0;
@@ -343,75 +117,58 @@ export default function Home() {
           justify-content: space-between;
           align-items: center;
           transition: all 0.4s ease;
-          background: ${scrollY > 60 ? "rgba(245, 240, 232, 0.95)" : "transparent"};
-          backdrop-filter: ${scrollY > 60 ? "blur(12px)" : "none"};
-          border-bottom: ${scrollY > 60 ? "1px solid rgba(74,124,89,0.15)" : "none"};
         }
-
         .nav-logo {
           font-family: 'Playfair Display', serif;
           font-size: 1.5rem;
           font-weight: 700;
-          color: var(--forest);
+          color: var(--white);
           letter-spacing: -0.5px;
         }
-
-        .nav-logo span { color: var(--fern); }
-
-        .nav-links {
-          display: flex;
-          gap: 2.5rem;
-          list-style: none;
-        }
-
+        .nav-logo.scrolled { color: var(--forest); }
+        .nav-logo span { color: var(--sage); }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
         .nav-links a {
           text-decoration: none;
           font-size: 0.85rem;
           font-weight: 500;
           letter-spacing: 0.08em;
           text-transform: uppercase;
-          color: var(--forest);
-          opacity: 0.7;
+          opacity: 0.85;
           transition: opacity 0.2s;
         }
-
+        .nav-links a { color: rgba(255,255,255,0.85); }
+        .nav-links.scrolled a { color: var(--forest); }
         .nav-links a:hover { opacity: 1; }
 
-        /* HERO */
+        /* ── HERO ── */
         .hero {
           min-height: 100vh;
-          background: linear-gradient(160deg, var(--forest) 0%, var(--moss) 50%, #3a6b4a 100%);
-          display: flex;
-          align-items: center;
           position: relative;
           overflow: hidden;
-          padding: 8rem 3rem 4rem;
+          display: flex;
+          align-items: center;
+          padding: 8rem 3rem 5rem;
         }
-
-        .hero::before {
+        .hero-bg-image {
+          position: absolute;
+          inset: 0;
+          background-image: url('/assets/cinnamonheader.webp');
+          background-size: cover;
+          background-position: center 40%;
+          z-index: 0;
+        }
+        .hero-bg-image::after {
           content: '';
           position: absolute;
           inset: 0;
-          background-image: 
-            radial-gradient(circle at 80% 20%, rgba(74,124,89,0.3) 0%, transparent 50%),
-            radial-gradient(circle at 20% 80%, rgba(200,168,75,0.1) 0%, transparent 40%);
+          background: linear-gradient(
+            120deg,
+            rgba(13,31,23,0.82) 0%,
+            rgba(26,61,43,0.72) 45%,
+            rgba(45,90,61,0.45) 100%
+          );
         }
-
-        .hero-bg-text {
-          position: absolute;
-          right: -2rem;
-          top: 50%;
-          transform: translateY(-50%);
-          font-family: 'Playfair Display', serif;
-          font-size: clamp(8rem, 18vw, 22rem);
-          font-weight: 900;
-          color: rgba(255,255,255,0.03);
-          line-height: 1;
-          pointer-events: none;
-          user-select: none;
-          letter-spacing: -8px;
-        }
-
         .hero-content {
           position: relative;
           z-index: 2;
@@ -423,13 +180,12 @@ export default function Home() {
           gap: 4rem;
           align-items: center;
         }
-
         .hero-badge {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          background: rgba(200,168,75,0.15);
-          border: 1px solid rgba(200,168,75,0.3);
+          background: rgba(200,168,75,0.18);
+          border: 1px solid rgba(200,168,75,0.35);
           color: var(--gold);
           padding: 0.4rem 1rem;
           border-radius: 100px;
@@ -439,7 +195,6 @@ export default function Home() {
           text-transform: uppercase;
           margin-bottom: 1.5rem;
         }
-
         .hero-title {
           font-family: 'Playfair Display', serif;
           font-size: clamp(2.8rem, 5vw, 4.5rem);
@@ -449,1107 +204,522 @@ export default function Home() {
           letter-spacing: -2px;
           margin-bottom: 1.5rem;
         }
-
-        .hero-title em {
-          font-style: italic;
-          color: var(--sage);
-        }
-
+        .hero-title em { font-style: italic; color: var(--sage); }
         .hero-sub {
           font-size: 1.05rem;
-          color: rgba(255,255,255,0.65);
+          color: rgba(255,255,255,0.70);
           line-height: 1.7;
           margin-bottom: 2.5rem;
           font-weight: 300;
           max-width: 480px;
         }
-
-        .hero-cta {
-          display: flex;
-          gap: 1rem;
-          flex-wrap: wrap;
-        }
-
+        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
         .btn-primary {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          background: var(--gold);
-          color: var(--forest);
-          padding: 0.85rem 2rem;
-          border-radius: 4px;
-          font-weight: 600;
-          font-size: 0.9rem;
-          text-decoration: none;
-          letter-spacing: 0.02em;
-          transition: all 0.2s;
-          border: none;
-          cursor: pointer;
+          display: inline-flex; align-items: center; gap: 0.5rem;
+          background: var(--gold); color: var(--forest);
+          padding: 0.85rem 2rem; border-radius: 4px;
+          font-weight: 600; font-size: 0.9rem;
+          text-decoration: none; letter-spacing: 0.02em;
+          transition: all 0.2s; border: none; cursor: pointer;
         }
-
-        .btn-primary:hover {
-          background: #d4b460;
-          transform: translateY(-2px);
-          box-shadow: 0 8px 24px rgba(200,168,75,0.4);
-        }
-
+        .btn-primary:hover { background: #d4b460; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,168,75,0.4); }
         .btn-outline {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          background: transparent;
-          color: var(--white);
-          padding: 0.85rem 2rem;
-          border-radius: 4px;
-          font-weight: 500;
-          font-size: 0.9rem;
-          text-decoration: none;
-          letter-spacing: 0.02em;
-          transition: all 0.2s;
-          border: 1px solid rgba(255,255,255,0.25);
-          cursor: pointer;
+          display: inline-flex; align-items: center; gap: 0.5rem;
+          background: transparent; color: var(--white);
+          padding: 0.85rem 2rem; border-radius: 4px;
+          font-weight: 500; font-size: 0.9rem;
+          text-decoration: none; letter-spacing: 0.02em;
+          transition: all 0.2s; border: 1px solid rgba(255,255,255,0.3); cursor: pointer;
         }
+        .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); }
 
-        .btn-outline:hover {
-          background: rgba(255,255,255,0.08);
-          border-color: rgba(255,255,255,0.5);
-        }
+        .hero-content {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
 
-        .hero-stats {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1.5rem;
-        }
+/* wrapper */
+.hero-image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
 
-        .stat-card {
-          background: rgba(255,255,255,0.06);
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(255,255,255,0.1);
-          border-radius: 12px;
-          padding: 1.8rem;
-          transition: transform 0.3s, background 0.3s;
-        }
+/* wrapper = controls size + shadow */
+.hero-image-wrapper {
+  position: relative;
+  width: 130%;
+  margin-left: -25%; /* center the enlarged box */
 
-        .stat-card:hover {
-          transform: translateY(-4px);
-          background: rgba(255,255,255,0.1);
-        }
+  border-radius: 20px;
+  overflow: hidden; /* IMPORTANT: clips image cleanly */
 
-        .stat-card:first-child { grid-column: span 2; }
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+}
 
-        .stat-icon {
-          font-size: 2rem;
-          margin-bottom: 0.75rem;
-          display: block;
-        }
+/* image = just fills wrapper */
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 
-        .stat-num {
-          font-family: 'Playfair Display', serif;
-          font-size: 2.5rem;
-          font-weight: 700;
-          color: var(--white);
-          line-height: 1;
-          margin-bottom: 0.3rem;
-        }
+  transform: scale(1.2); /* slight zoom instead of breaking layout */
+  opacity: 0.95;
 
-        .stat-label {
-          font-size: 0.8rem;
-          color: rgba(255,255,255,0.5);
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-        }
+  animation: float 6s ease-in-out infinite;
+}
 
-        /* SCROLL INDICATOR */
+/* blend overlay stays perfectly aligned now */
+.hero-image-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 40%,
+    rgba(255, 255, 255, 0.85) 100%
+  );
+}
+
         .scroll-line {
-          position: absolute;
-          bottom: 2rem;
-          left: 50%;
+          position: absolute; bottom: 2rem; left: 50%;
           transform: translateX(-50%);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.5rem;
-          color: rgba(255,255,255,0.4);
-          font-size: 0.7rem;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
+          display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+          color: rgba(255,255,255,0.4); font-size: 0.7rem;
+          letter-spacing: 0.15em; text-transform: uppercase;
           animation: fadeInUp 2s ease 1s both;
         }
-
         .scroll-line::after {
-          content: '';
-          width: 1px;
-          height: 50px;
+          content: ''; width: 1px; height: 50px;
           background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
           animation: scrollPulse 2s ease-in-out infinite;
         }
-
         @keyframes scrollPulse {
           0%, 100% { opacity: 0.4; transform: scaleY(1); }
           50% { opacity: 1; transform: scaleY(1.3); }
         }
 
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(20px) translateX(-50%); }
-          to { opacity: 1; transform: translateY(0) translateX(-50%); }
-        }
-
-        /* SECTIONS */
-        section {
-          padding: 7rem 3rem;
-        }
-
-        .section-inner {
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-
+        /* ── SECTIONS ── */
+        section { padding: 7rem 3rem; }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
         .section-label {
-          font-size: 0.72rem;
-          font-weight: 600;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: var(--fern);
-          margin-bottom: 1rem;
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
+          font-size: 0.72rem; font-weight: 600;
+          letter-spacing: 0.18em; text-transform: uppercase;
+          color: var(--fern); margin-bottom: 1rem;
+          display: flex; align-items: center; gap: 0.75rem;
         }
-
         .section-label::before {
-          content: '';
-          display: block;
-          width: 2rem;
-          height: 1px;
-          background: var(--fern);
+          content: ''; display: block;
+          width: 2rem; height: 1px; background: var(--fern);
         }
-
         .section-title {
           font-family: 'Playfair Display', serif;
-          font-size: clamp(2rem, 4vw, 3rem);
-          font-weight: 700;
-          color: var(--forest);
-          line-height: 1.15;
-          letter-spacing: -1.5px;
-          margin-bottom: 1rem;
+          font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+          color: var(--forest); line-height: 1.15;
+          letter-spacing: -1.5px; margin-bottom: 1rem;
         }
-
         .section-desc {
-          font-size: 1.05rem;
-          color: #4a5e54;
-          line-height: 1.7;
-          max-width: 600px;
-          font-weight: 300;
+          font-size: 1.05rem; color: #4a5e54;
+          line-height: 1.7; max-width: 600px; font-weight: 300;
+        }
+        .divider {
+          width: 60px; height: 3px;
+          background: linear-gradient(90deg, var(--fern), var(--sage));
+          border-radius: 2px; margin: 1.5rem 0;
         }
 
-        /* PROBLEM SECTION */
-        .problem-section {
-          background: var(--cream);
-        }
-
+        /* ── PROBLEM SECTION ── */
+        .problem-section { background: var(--cream); }
         .problem-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 4rem;
-          align-items: center;
-          margin-top: 4rem;
-        }
-
-        .problem-items {
-          display: flex;
-          flex-direction: column;
-          gap: 1.5rem;
-        }
-
-        .problem-item {
-          display: flex;
-          gap: 1.25rem;
-          align-items: flex-start;
-          padding: 1.5rem;
-          border-radius: 8px;
-          border-left: 3px solid var(--fern);
-          background: rgba(74,124,89,0.05);
-          transition: background 0.2s, transform 0.2s;
-        }
-
-        .problem-item:hover {
-          background: rgba(74,124,89,0.1);
-          transform: translateX(4px);
-        }
-
-        .problem-num {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.8rem;
-          font-weight: 700;
-          color: var(--sage);
-          opacity: 0.5;
-          line-height: 1;
-          min-width: 2rem;
-        }
-
-        .problem-text {
-          font-size: 0.95rem;
-          color: var(--forest);
-          line-height: 1.6;
-          font-weight: 400;
-        }
-
-        .problem-text strong {
-          display: block;
-          font-weight: 600;
-          margin-bottom: 0.25rem;
-          color: var(--moss);
-        }
-
-        .visual-card {
-          background: linear-gradient(145deg, var(--forest), var(--moss));
-          border-radius: 16px;
-          padding: 3rem;
-          color: white;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .visual-card::before {
-          content: '';
-          position: absolute;
-          top: -30%;
-          right: -20%;
-          width: 300px;
-          height: 300px;
-          background: radial-gradient(circle, rgba(200,168,75,0.2), transparent);
-          border-radius: 50%;
-        }
-
-        .visual-card-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.6rem;
-          font-weight: 700;
-          margin-bottom: 0.5rem;
-          position: relative;
-          z-index: 1;
-        }
-
-        .visual-card-sub {
-          font-size: 0.85rem;
-          opacity: 0.6;
-          margin-bottom: 2rem;
-          position: relative;
-          z-index: 1;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-        }
-
-        .impact-list {
-          list-style: none;
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          position: relative;
-          z-index: 1;
-        }
-
-        .impact-list li {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          font-size: 0.9rem;
-          opacity: 0.85;
-        }
-
-        .impact-list li::before {
-          content: '';
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: var(--gold);
-          flex-shrink: 0;
-        }
-
-        /* FEATURES */
-        .features-section {
-          background: var(--forest);
-          position: relative;
-          overflow: hidden;
-        }
-
-        .features-section::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background-image: radial-gradient(circle at 90% 50%, rgba(74,124,89,0.3) 0%, transparent 60%);
-        }
-
-        .features-section .section-label { color: var(--sage); }
-        .features-section .section-label::before { background: var(--sage); }
-        .features-section .section-title { color: var(--white); }
-        .features-section .section-desc { color: rgba(255,255,255,0.55); }
-
-        .features-grid {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1.5rem;
-          margin-top: 4rem;
-          position: relative;
-          z-index: 1;
-        }
-
-        .feature-card {
-          padding: 2rem;
-          border-radius: 12px;
-          border: 1px solid rgba(255,255,255,0.08);
-          background: rgba(255,255,255,0.04);
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .feature-card::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, var(--gold), var(--fern));
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform 0.4s ease;
-        }
-
-        .feature-card:hover {
-          background: rgba(255,255,255,0.08);
-          border-color: rgba(255,255,255,0.15);
-          transform: translateY(-4px);
-        }
-
-        .feature-card:hover::before { transform: scaleX(1); }
-
-        .feature-icon {
-          font-size: 2.2rem;
-          margin-bottom: 1.25rem;
-          display: block;
-        }
-
-        .feature-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.2rem;
-          font-weight: 700;
-          color: var(--white);
-          margin-bottom: 0.75rem;
-        }
-
-        .feature-desc {
-          font-size: 0.875rem;
-          color: rgba(255,255,255,0.5);
-          line-height: 1.65;
-          font-weight: 300;
-        }
-
-        /* TEAM */
-        .team-section {
-          background: linear-gradient(180deg, #f0ebe0 0%, var(--cream) 100%);
-        }
-
-        .team-grid {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 2rem;
           margin-top: 4rem;
         }
-
-        .team-card {
+        .problem-card {
           background: var(--white);
           border-radius: 16px;
           overflow: hidden;
           border: 1px solid rgba(74,124,89,0.1);
-          transition: all 0.35s ease;
+          transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .problem-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 20px 50px rgba(26,61,43,0.1);
+        }
+        .problem-card-image-wrap {
+          overflow: hidden;
+          height: 200px;
           position: relative;
         }
-
-        .team-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 24px 60px rgba(26,61,43,0.12);
-          border-color: rgba(74,124,89,0.25);
+        .problem-card-body {
+          padding: 1.5rem 1.75rem 1.75rem;
         }
-
-        .team-card-header {
-          padding: 2rem 2rem 1.5rem;
-          display: flex;
-          align-items: flex-start;
-          gap: 1.25rem;
-          border-bottom: 1px solid rgba(74,124,89,0.07);
-        }
-
-        .team-avatar {
-          width: 64px;
-          height: 64px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.8rem;
-          flex-shrink: 0;
-          position: relative;
-        }
-
-        .team-avatar::after {
-          content: '';
-          position: absolute;
-          inset: -2px;
-          border-radius: 50%;
-          background: linear-gradient(135deg, var(--gold), transparent);
-          z-index: -1;
-        }
-
-        .team-id {
-          font-size: 0.72rem;
-          font-weight: 600;
-          letter-spacing: 0.1em;
-          color: var(--fern);
-          text-transform: uppercase;
-          margin-bottom: 0.25rem;
-        }
-
-        .team-name {
+        .problem-num {
           font-family: 'Playfair Display', serif;
-          font-size: 1.3rem;
-          font-weight: 700;
-          color: var(--forest);
-          line-height: 1.2;
-          margin-bottom: 0.25rem;
+          font-size: 0.75rem; font-weight: 700;
+          color: var(--fern); letter-spacing: 0.12em;
+          text-transform: uppercase; margin-bottom: 0.5rem;
+        }
+        .problem-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.2rem; font-weight: 700;
+          color: var(--forest); margin-bottom: 0.6rem;
+          line-height: 1.25;
+        }
+        .problem-text {
+          font-size: 0.88rem; color: #4a5e54;
+          line-height: 1.65; font-weight: 300;
+        }
+        .problem-impact-card {
+          grid-column: span 2;
+          background: linear-gradient(145deg, var(--forest), var(--moss));
+          border-radius: 16px; padding: 3rem;
+          color: white; position: relative; overflow: hidden;
+        }
+        .problem-impact-card::before {
+          content: '';
+          position: absolute; top: -30%; right: -20%;
+          width: 300px; height: 300px;
+          background: radial-gradient(circle, rgba(200,168,75,0.2), transparent);
+          border-radius: 50%;
+        }
+        .impact-inner { position: relative; z-index: 1; }
+        .impact-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+        .impact-list li {
+          display: flex; align-items: center; gap: 0.75rem;
+          font-size: 0.9rem; color: var(--forest); font-weight: 500;
+        }
+        .impact-list li::before {
+          content: ''; width: 6px; height: 6px;
+          border-radius: 50%; background: var(--gold); flex-shrink: 0;
         }
 
-        .team-role {
-          font-size: 0.82rem;
-          color: var(--fern);
-          font-weight: 500;
+        /* ── FEATURES ── */
+        .features-section {
+          background: var(--forest);
+          position: relative; overflow: hidden;
         }
-
-        .team-card-body {
-          padding: 1.5rem 2rem;
+        .features-section::before {
+          content: ''; position: absolute; inset: 0;
+          background-image: radial-gradient(circle at 90% 50%, rgba(74,124,89,0.3) 0%, transparent 60%);
         }
-
-        .team-desc {
-          font-size: 0.875rem;
-          color: #4a5e54;
-          line-height: 1.65;
-          margin-bottom: 1.25rem;
-          font-weight: 300;
+        .features-section .section-label { color: var(--sage); }
+        .features-section .section-label::before { background: var(--sage); }
+        .features-section .section-title { color: var(--white); }
+        .features-section .section-desc { color: rgba(255,255,255,0.55); }
+        .features-grid {
+          display: grid; grid-template-columns: repeat(4, 1fr);
+          gap: 1.5rem; margin-top: 4rem; position: relative; z-index: 1;
         }
-
-        .team-accuracy {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.4rem;
-          background: rgba(74,124,89,0.08);
-          color: var(--moss);
-          padding: 0.3rem 0.8rem;
-          border-radius: 100px;
-          font-size: 0.78rem;
-          font-weight: 600;
+        .feature-card {
+          padding: 2rem; border-radius: 12px;
+          border: 1px solid rgba(255,255,255,0.08);
+          background: rgba(255,255,255,0.04);
+          transition: all 0.3s ease; position: relative; overflow: hidden;
+        }
+        .feature-card::before {
+          content: ''; position: absolute;
+          top: 0; left: 0; right: 0; height: 2px;
+          background: linear-gradient(90deg, var(--gold), var(--fern));
+          transform: scaleX(0); transform-origin: left; transition: transform 0.4s ease;
+        }
+        .feature-card:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); transform: translateY(-4px); }
+        .feature-card:hover::before { transform: scaleX(1); }
+        .feature-num {
+          font-family: 'Playfair Display', serif;
+          font-size: 2.5rem; font-weight: 700;
+          color: rgba(255,255,255,0.08); line-height: 1;
           margin-bottom: 1rem;
         }
-
-        .tech-tags {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
+        .feature-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 1.15rem; font-weight: 700;
+          color: var(--white); margin-bottom: 0.75rem;
         }
+        .feature-desc { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.65; font-weight: 300; }
 
-        .tech-tag {
-          font-size: 0.72rem;
-          font-weight: 500;
-          padding: 0.25rem 0.65rem;
-          border-radius: 4px;
-          background: rgba(26,61,43,0.06);
-          color: var(--moss);
-          border: 1px solid rgba(26,61,43,0.1);
-          letter-spacing: 0.02em;
-        }
-
-        /* TECH STACK */
-        .tech-section {
-          background: var(--cream);
-        }
-
-        .tech-overview {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.5rem;
-          margin-top: 4rem;
-        }
-
-        .tech-group {
-          padding: 2rem;
-          border-radius: 12px;
-          background: var(--white);
+        /* ── TEAM ── */
+        .team-section { background: linear-gradient(180deg, #f0ebe0 0%, var(--cream) 100%); }
+        .team-card {
+          background: var(--white); border-radius: 16px; overflow: hidden;
           border: 1px solid rgba(74,124,89,0.1);
+          transition: all 0.35s ease; position: relative;
+        }
+        .team-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(26,61,43,0.12); border-color: rgba(74,124,89,0.25); }
+        .team-card-header {
+          padding: 2rem 2rem 1.5rem;
+          display: flex; align-items: flex-start; gap: 1.25rem;
+          border-bottom: 1px solid rgba(74,124,89,0.07);
+        }
+        .team-initials {
+          width: 56px; height: 56px; border-radius: 50%;
+          background: linear-gradient(135deg, var(--fern), var(--sage));
+          display: flex; align-items: center; justify-content: center;
+          font-family: 'Playfair Display', serif;
+          font-size: 1.1rem; font-weight: 700; color: white;
+          flex-shrink: 0; letter-spacing: -0.5px;
+        }
+        .team-id { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; color: var(--fern); text-transform: uppercase; margin-bottom: 0.25rem; }
+        .team-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--forest); line-height: 1.2; margin-bottom: 0.25rem; }
+        .team-role { font-size: 0.82rem; color: var(--fern); font-weight: 500; }
+        .team-card-body { padding: 1.5rem 2rem; }
+        .team-desc { font-size: 0.875rem; color: #4a5e54; line-height: 1.65; margin-bottom: 1.25rem; font-weight: 300; }
+        .team-accuracy {
+          display: inline-flex; align-items: center; gap: 0.4rem;
+          background: rgba(74,124,89,0.08); color: var(--moss);
+          padding: 0.3rem 0.8rem; border-radius: 100px;
+          font-size: 0.78rem; font-weight: 600; margin-bottom: 1rem;
+        }
+        .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .tech-tag {
+          font-size: 0.72rem; font-weight: 500;
+          padding: 0.25rem 0.65rem; border-radius: 4px;
+          background: rgba(26,61,43,0.06); color: var(--moss);
+          border: 1px solid rgba(26,61,43,0.1); letter-spacing: 0.02em;
         }
 
-        .tech-group-title {
-          font-size: 0.72rem;
-          font-weight: 600;
-          letter-spacing: 0.15em;
-          text-transform: uppercase;
-          color: var(--fern);
-          margin-bottom: 1.25rem;
-          padding-bottom: 0.75rem;
-          border-bottom: 1px solid rgba(74,124,89,0.1);
+        /* ── TIMELINE ── */
+        .tl-wrap {
+          position: relative;
+          max-width: 1000px;
+          margin: 3rem auto 0;
+          padding: 4px 0;
         }
-
-        .tech-items {
-          list-style: none;
+        .tl-line {
+          position: absolute;
+          left: 50%; top: 0; bottom: 0;
+          width: 2px;
+          background: linear-gradient(180deg, var(--fern), var(--sage));
+          transform: translateX(-50%);
+          z-index: 0;
+        }
+        .tl-row {
+          display: grid;
+          grid-template-columns: 1fr 40px 1fr;
+          align-items: start;
+          position: relative;
+          z-index: 1;
+          margin-bottom: 1.5rem;
+        }
+        .tl-dot-col {
           display: flex;
-          flex-direction: column;
-          gap: 0.6rem;
+          justify-content: center;
+          padding-top: 18px;
         }
-
-        .tech-items li {
-          font-size: 0.9rem;
-          color: var(--forest);
-          display: flex;
-          align-items: center;
-          gap: 0.6rem;
-        }
-
-        .tech-items li::before {
-          content: '';
-          width: 5px;
-          height: 5px;
-          border-radius: 50%;
-          background: var(--sage);
+        .tl-dot {
+          width: 22px; height: 22px; border-radius: 50%;
+          background: linear-gradient(135deg, var(--fern), var(--sage));
+          border: 3px solid var(--cream);
+          box-shadow: 0 0 0 4px rgba(74,124,89,0.18);
           flex-shrink: 0;
+          transition: transform 0.25s, box-shadow 0.25s;
         }
+        .tl-row:hover .tl-dot {
+          transform: scale(1.2);
+          box-shadow: 0 0 0 6px rgba(74,124,89,0.15);
+        }
+        .tl-card {
+          background: var(--white);
+          border: 1px solid rgba(74,124,89,0.13);
+          border-radius: 14px;
+          padding: 1.4rem 1.5rem 1.3rem;
+          margin-top: 4px;
+          position: relative;
+          padding-top: 2.1rem;
+          cursor: pointer;
+          transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .tl-card:hover {
+          box-shadow: 0 10px 28px rgba(74,124,89,0.13);
+          transform: translateY(-4px);
+        }
+        .tl-left .tl-card { margin-right: 14px; }
+        .tl-right .tl-card { margin-left: 14px; }
+        .tl-empty {}
+        .tl-badge {
+          position: absolute;
+          top: -12px; left: 1.25rem;
+          background: var(--fern); color: white;
+          font-size: 0.68rem; font-weight: 700;
+          letter-spacing: 0.07em; padding: 3px 10px;
+          border-radius: 20px;
+        }
+        .tl-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 1rem; font-weight: 700;
+          color: var(--forest); margin-bottom: 0.4rem;
+          line-height: 1.3;
+        }
+        .tl-desc { font-size: 0.8rem; color: var(--sage); line-height: 1.55; font-weight: 300; }
 
-        /* COMMERCIALIZATION */
+        /* ── TECH STACK ── */
+        .tech-section { background: var(--cream); }
+        .tech-overview { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 4rem; }
+        .tech-group { padding: 2rem; border-radius: 12px; background: var(--white); border: 1px solid rgba(74,124,89,0.1); }
+        .tech-group-title { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: var(--fern); margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(74,124,89,0.1); }
+        .tech-items { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+        .tech-items li { font-size: 0.9rem; color: var(--forest); display: flex; align-items: center; gap: 0.6rem; }
+        .tech-items li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--sage); flex-shrink: 0; }
+
+        /* ── COMMERCIALIZATION ── */
         .commercial-section {
           background: linear-gradient(135deg, var(--forest) 0%, #0d2b1a 100%);
-          position: relative;
-          overflow: hidden;
+          position: relative; overflow: hidden;
         }
-
         .commercial-section::before {
-          content: '';
-          position: absolute;
-          bottom: 0; right: 0;
-          width: 600px;
-          height: 600px;
+          content: ''; position: absolute;
+          bottom: 0; right: 0; width: 600px; height: 600px;
           background: radial-gradient(circle, rgba(74,124,89,0.2), transparent 70%);
           transform: translate(30%, 30%);
         }
-
         .commercial-section .section-label { color: var(--gold); }
         .commercial-section .section-label::before { background: var(--gold); }
         .commercial-section .section-title { color: var(--white); }
         .commercial-section .section-desc { color: rgba(255,255,255,0.55); }
-
-        .commercial-grid {
-          display: grid;
-          grid-template-columns: 1.2fr 1fr;
-          gap: 4rem;
-          align-items: start;
-          margin-top: 4rem;
-          position: relative;
-          z-index: 1;
-        }
-
-        .pricing-cards {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-
+        .commercial-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: start; margin-top: 4rem; position: relative; z-index: 1; }
+        .pricing-cards { display: flex; flex-direction: column; gap: 1rem; }
         .pricing-card {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 1.25rem 1.75rem;
-          border-radius: 10px;
+          display: flex; justify-content: space-between; align-items: center;
+          padding: 1.25rem 1.75rem; border-radius: 10px;
           border: 1px solid rgba(255,255,255,0.1);
-          background: rgba(255,255,255,0.05);
-          transition: all 0.25s;
+          background: rgba(255,255,255,0.05); transition: all 0.25s;
         }
-
-        .pricing-card:hover {
-          background: rgba(255,255,255,0.1);
-          border-color: rgba(200,168,75,0.4);
-        }
-
-        .pricing-card.featured {
-          background: rgba(200,168,75,0.12);
-          border-color: rgba(200,168,75,0.35);
-        }
-
-        .pricing-tier {
-          font-size: 0.85rem;
-          color: rgba(255,255,255,0.7);
-          font-weight: 500;
-        }
-
-        .pricing-price {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.4rem;
-          font-weight: 700;
-          color: var(--gold);
-        }
-
-        .pricing-period {
-          font-size: 0.7rem;
-          color: rgba(255,255,255,0.4);
-          font-weight: 400;
-        }
-
-        .value-props {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .value-prop {
-          display: flex;
-          gap: 1rem;
-          align-items: flex-start;
-        }
-
+        .pricing-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(200,168,75,0.4); }
+        .pricing-card.featured { background: rgba(200,168,75,0.12); border-color: rgba(200,168,75,0.35); }
+        .pricing-tier { font-size: 0.85rem; color: rgba(255,255,255,0.7); font-weight: 500; }
+        .pricing-price { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); }
+        .pricing-period { font-size: 0.7rem; color: rgba(255,255,255,0.4); font-weight: 400; }
+        .value-props { display: flex; flex-direction: column; gap: 1rem; }
+        .value-prop { display: flex; gap: 1rem; align-items: flex-start; }
         .value-prop-icon {
-          width: 36px;
-          height: 36px;
-          background: rgba(200,168,75,0.15);
-          border: 1px solid rgba(200,168,75,0.25);
-          border-radius: 8px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1rem;
-          flex-shrink: 0;
+          width: 36px; height: 36px;
+          background: rgba(200,168,75,0.15); border: 1px solid rgba(200,168,75,0.25);
+          border-radius: 8px; display: flex; align-items: center; justify-content: center;
+          font-size: 0.9rem; font-weight: 700; color: var(--gold);
+          flex-shrink: 0; font-family: 'Playfair Display', serif;
         }
+        .value-prop-text { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.55; font-weight: 300; }
+        .value-prop-text strong { color: var(--white); font-weight: 600; display: block; margin-bottom: 0.15rem; font-size: 0.95rem; }
 
-        .value-prop-text {
-          font-size: 0.9rem;
-          color: rgba(255,255,255,0.7);
-          line-height: 1.55;
-          font-weight: 300;
-        }
-
-        .value-prop-text strong {
-          color: var(--white);
-          font-weight: 600;
-          display: block;
-          margin-bottom: 0.15rem;
-          font-size: 0.95rem;
-        }
-
-        /* FOOTER */
-        footer {
-          background: var(--ink);
-          padding: 4rem 3rem 2.5rem;
-          color: rgba(255,255,255,0.5);
-        }
-
-        .footer-inner {
-          max-width: 1200px;
-          margin: 0 auto;
-        }
-
-        .footer-top {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          padding-bottom: 2.5rem;
-          border-bottom: 1px solid rgba(255,255,255,0.08);
-          margin-bottom: 2rem;
-        }
-
-        .footer-brand {
-          font-family: 'Playfair Display', serif;
-          font-size: 2rem;
-          font-weight: 700;
-          color: var(--white);
-          margin-bottom: 0.5rem;
-        }
-
+        /* ── FOOTER ── */
+        footer { background: var(--ink); padding: 4rem 3rem 2.5rem; color: rgba(255,255,255,0.5); }
+        .footer-inner { max-width: 1200px; margin: 0 auto; }
+        .footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 2rem; }
+        .footer-brand { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
         .footer-brand span { color: var(--sage); }
-
-        .footer-tagline {
-          font-size: 0.85rem;
-          max-width: 300px;
-          line-height: 1.6;
-        }
-
-        .footer-info {
-          text-align: right;
-          font-size: 0.82rem;
-          line-height: 1.8;
-        }
-
-        .footer-info strong {
-          color: rgba(255,255,255,0.8);
-          display: block;
-          margin-bottom: 0.25rem;
-        }
-
-        .footer-bottom {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          font-size: 0.78rem;
-        }
-
-        .footer-bottom a {
-          color: var(--sage);
-          text-decoration: none;
-          transition: color 0.2s;
-        }
-
+        .footer-tagline { font-size: 0.85rem; max-width: 300px; line-height: 1.6; }
+        .footer-info { text-align: right; font-size: 0.82rem; line-height: 1.8; }
+        .footer-info strong { color: rgba(255,255,255,0.8); display: block; margin-bottom: 0.25rem; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+        .footer-bottom a { color: var(--sage); text-decoration: none; transition: color 0.2s; }
         .footer-bottom a:hover { color: var(--white); }
 
-        /* ANIMATIONS */
+        /* ── SYSTEM DIAGRAM ── */
+        .system-diagram-wrap {
+  margin-top: 4rem;
+  background: var(--white);
+  border: 1px solid rgba(74,124,89,0.15);
+  border-radius: 16px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ✅ centers everything inside */
+}
+        .system-diagram-header {
+          padding: 1.5rem 2rem;
+          border-bottom: 1px solid rgba(74,124,89,0.1);
+          display: flex; align-items: center; gap: 1rem;
+        }
+        .system-diagram-dot {
+          width: 10px; height: 10px; border-radius: 50%;
+        }
+        .system-diagram-title {
+          font-family: 'Playfair Display', serif;
+          font-size: 1rem; font-weight: 700;
+          color: var(--forest);
+        }
+        .system-diagram-img {
+  width: 60%;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+        /* ── ANIMATIONS ── */
         @keyframes fadeInUp {
           from { opacity: 0; transform: translateY(30px); }
           to { opacity: 1; transform: translateY(0); }
         }
-
-        .animate-in {
-          animation: fadeInUp 0.7s ease both;
-        }
-
+        .animate-in { animation: fadeInUp 0.7s ease both; }
         .delay-1 { animation-delay: 0.1s; }
         .delay-2 { animation-delay: 0.2s; }
         .delay-3 { animation-delay: 0.3s; }
         .delay-4 { animation-delay: 0.4s; }
 
-        /* DIVIDER */
-        .divider {
-          width: 60px;
-          height: 3px;
-          background: linear-gradient(90deg, var(--fern), var(--sage));
-          border-radius: 2px;
-          margin: 1.5rem 0;
+        /* ── DOC CARD HOVER ── */
+        .doc-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 16px 40px rgba(26,61,43,0.1);
+          border-color: rgba(74,124,89,0.3) !important;
         }
 
-        /* RESEARCH TAG */
-        .research-tag {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.4rem;
-          background: rgba(74,124,89,0.1);
-          color: var(--fern);
-          padding: 0.3rem 0.75rem;
-          border-radius: 4px;
-          font-size: 0.75rem;
-          font-weight: 600;
-          border: 1px solid rgba(74,124,89,0.2);
-          margin-top: 1rem;
-        }
-
-        /* RESPONSIVE */
+        /* ── RESPONSIVE ── */
         @media (max-width: 900px) {
           nav { padding: 1rem 1.5rem; }
           .nav-links { display: none; }
           section { padding: 5rem 1.5rem; }
           .hero { padding: 7rem 1.5rem 3rem; }
           .hero-content { grid-template-columns: 1fr; gap: 3rem; }
-          .hero-bg-text { display: none; }
-          .hero-stats { grid-template-columns: 1fr 1fr; }
-          .hero-stats .stat-card:first-child { grid-column: span 2; }
+          .hero-right { display: none; }
           .problem-grid { grid-template-columns: 1fr; }
+          .problem-impact-card { grid-column: span 1; }
+          .impact-inner { grid-template-columns: 1fr; }
           .features-grid { grid-template-columns: 1fr 1fr; }
-          .team-grid { grid-template-columns: 1fr; }
           .tech-overview { grid-template-columns: 1fr 1fr; }
           .commercial-grid { grid-template-columns: 1fr; }
           .footer-top { flex-direction: column; gap: 1.5rem; }
           .footer-info { text-align: left; }
           .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
         }
-
         @media (max-width: 600px) {
           .features-grid { grid-template-columns: 1fr; }
           .tech-overview { grid-template-columns: 1fr; }
-          .hero-stats { grid-template-columns: 1fr; }
-          .hero-stats .stat-card:first-child { grid-column: span 1; }
+          .problem-grid { grid-template-columns: 1fr; }
         }
-        /* Documentation & timeline styles */
-        .docs-section {
-          background: var(--cream);
-          position: relative;
-          overflow: hidden;
-        }
-
-        .docs-section::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 1px;
-          background: linear-gradient(90deg, transparent, rgba(74,124,89,0.3), transparent);
-        }
-
-        /* TIMELINE ROADMAP */
-        .timeline-wrap {
-          position: relative;
-          margin: 4rem 0 5rem;
-        }
-
-        .timeline-track {
-          position: relative;
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-        }
-
-        .timeline-track::before {
-          content: '';
-          position: absolute;
-          top: 18px;
-          left: 0; right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, var(--fern), var(--sage), var(--mist));
-          z-index: 0;
-        }
-
-        .timeline-node {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.85rem;
-          position: relative;
-          z-index: 1;
-          flex: 1;
-        }
-
-        .timeline-dot {
-          width: 38px;
-          height: 38px;
-          border-radius: 50%;
-          background: var(--white);
-          border: 2px solid var(--fern);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 0.95rem;
-          box-shadow: 0 0 0 5px rgba(74,124,89,0.1);
-          transition: all 0.3s;
-        }
-
-        .timeline-node:hover .timeline-dot {
-          background: var(--fern);
-          box-shadow: 0 0 0 7px rgba(74,124,89,0.15);
-          transform: scale(1.1);
-        }
-
-        .timeline-label {
-          font-size: 0.78rem;
-          font-weight: 600;
-          color: var(--forest);
-          letter-spacing: 0.04em;
-          text-align: center;
-        }
-
-        .timeline-sub {
-          font-size: 0.7rem;
-          color: #7a9585;
-          text-align: center;
-          max-width: 100px;
-          line-height: 1.4;
-        }
-
-        .timeline-connector {
-          flex: 1;
-        }
-
-        /* PHASE TABS */
-        .phase-tabs {
-          display: flex;
-          gap: 0.5rem;
-          margin-bottom: 2rem;
-          border-bottom: 1px solid rgba(74,124,89,0.12);
-          padding-bottom: 0;
-          overflow-x: auto;
-        }
-
-        .phase-tab {
-          padding: 0.65rem 1.25rem;
-          border-radius: 6px 6px 0 0;
-          font-size: 0.8rem;
-          font-weight: 600;
-          letter-spacing: 0.04em;
-          cursor: pointer;
-          border: none;
-          border-bottom: 2px solid transparent;
-          background: transparent;
-          color: #7a9585;
-          transition: all 0.2s;
-          white-space: nowrap;
-          font-family: 'DM Sans', sans-serif;
-        }
-
-        .phase-tab:hover { color: var(--forest); }
-
-        .phase-tab.active {
-          color: var(--forest);
-          border-bottom-color: var(--fern);
-          background: rgba(74,124,89,0.05);
-        }
-
-        /* DOC CARDS GRID */
-        .doc-cards-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.25rem;
-        }
-
-        .doc-card {
-          background: var(--white);
-          border-radius: 12px;
-          border: 1px solid rgba(74,124,89,0.1);
-          padding: 1.5rem;
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-          transition: all 0.3s ease;
-          position: relative;
-          overflow: hidden;
-          text-decoration: none;
-          color: inherit;
-        }
-
-        .doc-card::after {
-          content: '';
-          position: absolute;
-          bottom: 0; left: 0; right: 0;
-          height: 3px;
-          background: linear-gradient(90deg, var(--fern), var(--sage));
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform 0.35s ease;
-        }
-
-        .doc-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 16px 40px rgba(26,61,43,0.1);
-          border-color: rgba(74,124,89,0.25);
-        }
-
-        .doc-card:hover::after { transform: scaleX(1); }
-
-        .doc-card-top {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-        }
-
-        .doc-type-badge {
-          font-size: 0.68rem;
-          font-weight: 700;
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          padding: 0.25rem 0.6rem;
-          border-radius: 4px;
-          background: rgba(74,124,89,0.08);
-          color: var(--fern);
-          border: 1px solid rgba(74,124,89,0.15);
-        }
-
-        .doc-type-badge.paper { background: rgba(200,168,75,0.1); color: #a07e2a; border-color: rgba(200,168,75,0.25); }
-        .doc-type-badge.slides { background: rgba(45,90,61,0.08); color: var(--moss); border-color: rgba(45,90,61,0.18); }
-        .doc-type-badge.report { background: rgba(107,76,42,0.08); color: var(--bark); border-color: rgba(107,76,42,0.18); }
-
-        .doc-icon-wrap {
-          width: 42px;
-          height: 42px;
-          border-radius: 10px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.3rem;
-          background: rgba(74,124,89,0.07);
-          flex-shrink: 0;
-        }
-
-        .doc-card-body { flex: 1; }
-
-        .doc-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 1rem;
-          font-weight: 700;
-          color: var(--forest);
-          line-height: 1.3;
-          margin-bottom: 0.4rem;
-        }
-
-        .doc-author {
-          font-size: 0.78rem;
-          color: var(--fern);
-          font-weight: 500;
-          margin-bottom: 0.5rem;
-        }
-
-        .doc-desc {
-          font-size: 0.82rem;
-          color: #6a8070;
-          line-height: 1.55;
-          font-weight: 300;
-        }
-
-        .doc-card-footer {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding-top: 0.75rem;
-          border-top: 1px solid rgba(74,124,89,0.07);
-        }
-
-        .doc-link-label {
-          font-size: 0.75rem;
-          font-weight: 600;
-          color: var(--fern);
-          letter-spacing: 0.04em;
-          display: flex;
-          align-items: center;
-          gap: 0.35rem;
-        }
-
-        .doc-link-arrow {
-          font-size: 0.85rem;
-          color: var(--sage);
-          transition: transform 0.2s;
-        }
-
-        .doc-card:hover .doc-link-arrow { transform: translateX(3px); }
-
-        @media (max-width: 900px) {
-          .doc-cards-grid { grid-template-columns: 1fr 1fr; }
-          .timeline-track::before { display: none; }
-          .timeline-track { flex-direction: column; gap: 1.5rem; }
-          .timeline-node { flex-direction: row; gap: 1rem; align-items: center; }
-          .timeline-label { text-align: left; }
-          .timeline-sub { text-align: left; max-width: none; }
-        }
-
-        @media (max-width: 600px) {
-          .doc-cards-grid { grid-template-columns: 1fr; }
-          .phase-tabs { gap: 0.25rem; }
-        }
-
       `}</style>
 
-      {/* NAV */}
-      <nav style={{ background: scrollY > 60 ? "rgba(245,240,232,0.95)" : "transparent" }}>
-        <div className="nav-logo">Cino<span>Grow</span></div>
-        <ul className="nav-links">
+      {/* ── NAV ── */}
+      <nav style={{
+        background: scrollY > 60 ? "rgba(245,240,232,0.95)" : "transparent",
+        backdropFilter: scrollY > 60 ? "blur(14px)" : "none",
+        borderBottom: scrollY > 60 ? "1px solid rgba(74,124,89,0.12)" : "none",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+          <img src="/assets/logo.png" alt="CinoGrow" style={{ height: "40px", width: "auto" }} />
+          <div className={`nav-logo ${scrollY > 60 ? "scrolled" : ""}`}>Cino<span>Grow</span></div>
+        </div>
+        <ul className={`nav-links ${scrollY > 60 ? "scrolled" : ""}`}>
+          <li><a href="#research-overview">Our Research</a></li>
           <li><a href="#problem">Problem</a></li>
           <li><a href="#features">Features</a></li>
           <li><a href="#team">Team</a></li>
-          <li><a href="#technology">Technology</a></li>
-          <li><a href="#commercialization">Launch</a></li>
+          <li><a href="#milestones">Milestones</a></li>
+          <li><a href="#documents">Documents</a></li>
         </ul>
       </nav>
 
-      {/* HERO */}
+      {/* ── HERO ── */}
       <section className="hero" id="home">
-        <div className="hero-bg-text">Cino</div>
+        <div className="hero-bg-image" />
         <div className="hero-content">
+          {/* LEFT: text */}
           <div>
             <div className="hero-badge animate-in">
-              <span>🌿</span>
               SLIIT Faculty of Computing · Group 25-26J-338
             </div>
             <h1 className="hero-title animate-in delay-1">
@@ -1566,28 +736,147 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hero-stats animate-in delay-2">
-            <div className="stat-card">
-              <span className="stat-icon">🇱🇰</span>
-              <div className="stat-num">90%</div>
-              <div className="stat-label">World's true cinnamon from Sri Lanka</div>
-            </div>
-            <div className="stat-card">
-              <span className="stat-icon">🤖</span>
-              <div className="stat-num">4</div>
-              <div className="stat-label">ML Models integrated</div>
-            </div>
-            <div className="stat-card">
-              <span className="stat-icon">📱</span>
-              <div className="stat-num">1st</div>
-              <div className="stat-label">All-in-one cinnamon AI platform</div>
-            </div>
-          </div>
-        </div>
+          {/* RIGHT: blended image */}
+<div className="hero-image-wrapper">
+  <img
+    src="/assets/cinnamon right header.webp"
+    alt="CinoGrow System Architecture Diagram"
+    className="hero-image"
+  />
+</div>
+</div>
         <div className="scroll-line">Scroll</div>
       </section>
 
-      {/* PROBLEM */}
+      {/* ── OUR RESEARCH ── */}
+      <section style={{ background: "linear-gradient(180deg, var(--cream) 0%, #faf6f0 100%)" }} id="research-overview">
+        <div className="section-inner">
+          <div className="section-label">Our Research</div>
+          <h2 className="section-title">Bridging research and<br />practical farm solutions</h2>
+          <p className="section-desc">CinoGrow is an integrated Machine Learning framework exclusively designed for cinnamon cultivation in Sri Lanka, built on rigorous academic research and field data collection.</p>
+          <div className="divider" />
+
+          <div style={{ marginTop: "3.5rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "start" }}>
+              <div>
+                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.35rem", fontWeight: 700, color: "var(--forest)", marginBottom: "1rem" }}>Project Scope</h3>
+                <p style={{ fontSize: "0.95rem", color: "#4a5e54", lineHeight: 1.7, marginBottom: "1.25rem", fontWeight: 300 }}>Our research covers four major agricultural domains through integrated machine learning:</p>
+                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.85rem" }}>
+                  {[
+                    "Nutrient deficiency identification using soil and leaf images",
+                    "Stage-based disease and pest detection",
+                    "Climate-integrated yield prediction and decision support",
+                    "Cinnamon oil yield forecasting and distillation optimization"
+                  ].map((item, i) => (
+                    <li key={i} style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem", fontSize: "0.9rem", color: "var(--forest)" }}>
+                      <span style={{ color: "var(--fern)", fontWeight: 700, marginTop: "2px", flexShrink: 0 }}>✓</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div style={{ background: "var(--white)", padding: "2rem", borderRadius: "12px", border: "1px solid rgba(74,124,89,0.15)" }}>
+                <h4 style={{ fontSize: "0.78rem", fontWeight: 700, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--fern)", marginBottom: "1rem" }}>Primary Data Sources</h4>
+                <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.7rem" }}>
+                  {[
+                    "National Cinnamon Research & Training Center",
+                    "Field data from cinnamon farmers",
+                    "Historical yield and climate records",
+                    "Peer-reviewed agricultural and AI research"
+                  ].map((source, i) => (
+                    <li key={i} style={{ fontSize: "0.9rem", color: "var(--moss)", display: "flex", alignItems: "flex-start", gap: "0.5rem" }}>
+                      <span style={{ color: "var(--gold)", flexShrink: 0 }}>•</span> {source}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem" }}>
+            <div style={{ background: "rgba(74,124,89,0.04)", padding: "2rem", borderRadius: "12px", border: "1px solid rgba(74,124,89,0.1)" }}>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.15rem", fontWeight: 700, color: "var(--forest)", marginBottom: "1.25rem" }}>Literature Review</h3>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                {[
+                  "CNN-based plant disease models achieve 90%+ accuracy on rice and maize",
+                  "Soil analysis systems improve fertilizer optimization",
+                  "Weather-driven yield forecasting using Random Forest and XGBoost",
+                  "Essential oil extraction research using regression techniques"
+                ].map((point, i) => (
+                  <li key={i} style={{ fontSize: "0.85rem", color: "var(--forest)", paddingLeft: "1.25rem", position: "relative" }}>
+                    <span style={{ position: "absolute", left: 0, color: "var(--sage)" }}>→</span>
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div style={{ background: "rgba(200,168,75,0.05)", padding: "2rem", borderRadius: "12px", border: "1px solid rgba(200,168,75,0.15)" }}>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.15rem", fontWeight: 700, color: "var(--forest)", marginBottom: "1.25rem" }}>Research Gap</h3>
+              <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "1rem" }}>
+                {[
+                  { label: "No cinnamon-specific systems", desc: "Existing tools are generalized for multiple crops" },
+                  { label: "Fragmented solutions", desc: "No unified platform addresses the full farming cycle" },
+                  { label: "Limited climate adaptation", desc: "Few systems integrate local Sri Lankan weather data" },
+                  { label: "No oil optimization models", desc: "Missing ML support for distillation timing" }
+                ].map((gap, i) => (
+                  <li key={i} style={{ fontSize: "0.85rem", color: "var(--forest)" }}>
+                    <strong style={{ color: "var(--bark)", display: "block", marginBottom: "0.2rem" }}>{gap.label}</strong>
+                    <span style={{ color: "#6a8070" }}>{gap.desc}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div style={{ marginTop: "4rem", background: "linear-gradient(135deg, var(--forest), var(--moss))", color: "white", padding: "3rem", borderRadius: "16px", position: "relative", overflow: "hidden" }}>
+            <div style={{ position: "absolute", top: "-20%", right: "-10%", width: "300px", height: "300px", background: "radial-gradient(circle, rgba(200,168,75,0.1), transparent)", borderRadius: "50%", zIndex: 0 }} />
+            <div style={{ position: "relative", zIndex: 1 }}>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.5rem", fontWeight: 700, marginBottom: "0.5rem" }}>Research Problem & Solution</h3>
+              <p style={{ fontSize: "0.95rem", opacity: 0.85, marginBottom: "1.5rem", maxWidth: "600px", lineHeight: 1.7 }}>
+                <strong>How can Machine Learning be integrated into a unified mobile platform to support Sri Lankan cinnamon farmers with accurate, stage-aware, and climate-informed agricultural decisions?</strong>
+              </p>
+              <p style={{ fontSize: "0.85rem", opacity: 0.75, lineHeight: 1.7 }}>Cinnamon farmers rely on traditional knowledge for fertilizer application, disease identification, and oil extraction. CinoGrow solves this by providing a context-aware, Sinhala-supported, AI-driven system that bridges research knowledge and practical farm-level decision-making.</p>
+            </div>
+          </div>
+
+          <div style={{ marginTop: "4rem" }}>
+            <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.35rem", fontWeight: 700, color: "var(--forest)", marginBottom: "2rem" }}>Specific Research Objectives</h3>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1.5rem" }}>
+              {[
+                { title: "Fertilizer Recommendation", desc: "Develop a dual-image analysis model using soil and leaf photographs to detect nutrient deficiencies and recommend precise fertilizer applications." },
+                { title: "Disease & Pest Detection", desc: "Design a stage-aware CNN-based classification system to detect cinnamon diseases with actionable treatment guidance." },
+                { title: "Yield Prediction", desc: "Implement a climate-integrated model using historical yield data and farm inputs to forecast plot-level yield and provide weather-based advisories." },
+                { title: "Oil Production Optimization", desc: "Develop an XGBoost-based predictive model to estimate cinnamon oil yield and recommend optimal drying and distillation durations." }
+              ].map((obj, i) => (
+                <div key={i} style={{ padding: "1.75rem", background: "var(--white)", border: "1px solid rgba(74,124,89,0.1)", borderRadius: "12px", borderLeft: "3px solid var(--fern)" }}>
+                  <h4 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.05rem", fontWeight: 700, color: "var(--forest)", marginBottom: "0.5rem" }}>{obj.title}</h4>
+                  <p style={{ fontSize: "0.85rem", color: "#4a5e54", lineHeight: 1.6, fontWeight: 300 }}>{obj.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* ── SYSTEM DIAGRAM ── */}
+          <div className="system-diagram-wrap">
+            <div className="system-diagram-header">
+              <div className="system-diagram-dot" style={{ background: "#ef4444" }} />
+              <div className="system-diagram-dot" style={{ background: "#f59e0b" }} />
+              <div className="system-diagram-dot" style={{ background: "#22c55e" }} />
+              <div className="system-diagram-title" style={{ marginLeft: "0.5rem" }}>
+                CinoGrow — System Architecture Diagram
+              </div>
+            </div>
+            <img
+              src="/assets/system diagram.png"
+              alt="CinoGrow System Architecture Diagram"
+              className="system-diagram-img"
+            />
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── PROBLEM ── */}
       <section className="problem-section" id="problem">
         <div className="section-inner">
           <div className="section-label">The Challenge</div>
@@ -1595,52 +884,72 @@ export default function Home() {
           <div className="divider" />
 
           <div className="problem-grid">
-            <div className="problem-items">
-              {[
-                { title: "Guesswork Fertilization", desc: "Fertilizer application relies on tradition and intuition rather than soil science, causing over or under-fertilization." },
-                { title: "Late Disease Detection", desc: "Pests and diseases are spotted only after significant crop damage, too late for effective intervention." },
-                { title: "Poor Oil Yield Forecasting", desc: "Drying and distillation processes are not digitally optimized, leading to revenue loss and wasted resources." },
-                { title: "Climate-Blind Planning", desc: "Farm planning overlooks changing climate factors, leaving farmers unprepared for weather-related risks." },
-              ].map((item, i) => (
-                <div className="problem-item" key={i}>
-                  <span className="problem-num">0{i + 1}</span>
-                  <div className="problem-text">
-                    <strong>{item.title}</strong>
-                    {item.desc}
-                  </div>
+            {[
+              {
+                title: "Guesswork Fertilization",
+                desc: "Fertilizer application relies on tradition and intuition rather than soil science, causing over or under-fertilization that harms yields."
+              },
+              {
+                title: "Late Disease Detection",
+                desc: "Pests and diseases are spotted only after significant crop damage — too late for effective intervention and costly to recover from."
+              },
+              {
+                title: "Poor Oil Yield Forecasting",
+                desc: "Drying and distillation processes are not digitally optimized, leading to revenue loss and wasted resources in oil extraction."
+              },
+              {
+                title: "Climate-Blind Planning",
+                desc: "Farm planning overlooks changing climate factors, leaving farmers unprepared for weather-related risks and yield fluctuations."
+              },
+            ].map((item, i) => {
+              const images = ['fertilizer.png', 'pest.png', 'oil.png', 'yield.png'];
+              return (
+              <div className="problem-card" key={i} style={{ display: "flex", flexDirection: "column" }}>
+                <div className="problem-card-image-wrap" style={{ width: "100%", height: "240px", overflow: "hidden", position: "relative" }}>
+                  <img src={`/assets/${images[i]}`} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
-              ))}
-            </div>
+                <div className="problem-card-body">
+                  <div className="problem-num">Challenge 0{i + 1}</div>
+                  <h3 className="problem-title">{item.title}</h3>
+                  <p className="problem-text">{item.desc}</p>
+                </div>
+              </div>
+            );
+            })}
 
-            <div>
-              <div className="visual-card">
-                <div className="visual-card-sub">Research Impact</div>
-                <div className="visual-card-title">Empowering 2.5M+ cinnamon farmers with data</div>
-                <ul className="impact-list" style={{ marginTop: "1.5rem" }}>
-                  <li>First ML-based DSS exclusively for cinnamon cultivation</li>
-                  <li>Covers yield, fertilizer, disease, weather and oil production</li>
-                  <li>Reduces dependency on costly lab testing</li>
-                  <li>Sinhala language support for local farmers</li>
-                  <li>Data sourced from National Cinnamon Research & Training Center</li>
-                  <li>Collaborative field research with real cinnamon farmers</li>
-                </ul>
+            <div className="problem-impact-card" style={{ background: "linear-gradient(135deg, rgba(74,124,89,0.08), rgba(122,171,138,0.05))", borderRadius: "16px", padding: "3rem", border: "1px solid rgba(74,124,89,0.15)" }}>
+              <div className="impact-inner" style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "3rem", alignItems: "center" }}>
+                <div>
+                  <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.75rem" }}>Research Impact</div>
+                  <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.6rem", fontWeight: 700, marginBottom: "0.5rem", lineHeight: 1.2, color: "var(--forest)" }}>Empowering 2.5M+ cinnamon farmers with data</h3>
+                  <ul className="impact-list">
+                    <li>First ML-based DSS exclusively for cinnamon cultivation</li>
+                    <li>Covers yield, fertilizer, disease, weather and oil production</li>
+                    <li>Reduces dependency on costly lab testing</li>
+                    <li>Sinhala language support for local farmers</li>
+                    <li>Data sourced from National Cinnamon Research & Training Center</li>
+                    <li>Collaborative field research with real cinnamon farmers</li>
+                  </ul>
+                </div>
+                <div style={{ borderRadius: "12px", overflow: "hidden", boxShadow: "0 8px 32px rgba(0,0,0,0.12)" }}>
+                  <img src="/assets/cinnamon cultivation 2.webp" alt="Cinnamon cultivation" style={{ width: "100%", height: "auto", minHeight: "320px", maxHeight: "420px", objectFit: "cover", display: "block" }} />
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* FEATURES */}
+      {/* ── FEATURES ── */}
       <section className="features-section" id="features">
         <div className="section-inner">
           <div className="section-label">Core Capabilities</div>
           <h2 className="section-title">Four intelligent modules.<br />One unified platform.</h2>
           <p className="section-desc">Each module tackles a distinct challenge in the cinnamon cultivation lifecycle, delivering actionable recommendations directly to farmers' mobile devices.</p>
-
           <div className="features-grid">
             {features.map((f, i) => (
               <div className="feature-card" key={i}>
-                <span className="feature-icon">{f.icon}</span>
+                <div className="feature-num">0{i + 1}</div>
                 <div className="feature-title">{f.title}</div>
                 <div className="feature-desc">{f.desc}</div>
               </div>
@@ -1649,204 +958,246 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TEAM */}
+      {/* ── TEAM ── */}
       <section className="team-section" id="team">
         <div className="section-inner">
-          <div className="section-label">Research Team</div>
-          <h2 className="section-title">Built by four specialists<br />in Information Technology</h2>
-          <p className="section-desc">Each team member owns a dedicated ML module, bringing specialized domain knowledge from data science, mobile development, and agricultural informatics.</p>
+          <div className="section-label">Our Team</div>
+          <h2 className="section-title">Meet the CinoGrow<br />Research Team</h2>
+          <p className="section-desc">A collaborative effort by dedicated researchers from SLIIT's Department of Information Technology, working together to deliver an integrated ML solution for cinnamon farming.</p>
 
-          <div className="team-grid">
-            {members.map((m, i) => (
-              <div className="team-card" key={i}>
-                <div className="team-card-header">
-                  <div className="team-avatar" style={{ background: `${m.color}22` }}>
-                    {m.icon}
+          <div style={{ marginTop: "4rem" }}>
+            {/* SUPERVISORS */}
+            <div style={{ marginBottom: "4rem" }}>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", fontWeight: 700, color: "var(--forest)", marginBottom: "1.5rem", paddingBottom: "0.75rem", borderBottom: "2px solid rgba(74,124,89,0.2)" }}>Supervisors</h3>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+                {[
+                  { name: "Supervisor - Ms. Suranjini Silva", role: "Senior Lecturer", dept: "Department of Information Technology", image: "/assets/supervisor.jpg" },
+                  { name: "Co-Supervisor - Ms. Narmada Gamage", role: "Lecturer", dept: "Department of Information Technology", image: "/assets/assistant supervisor.jpg" }
+                ].map((sup, i) => (
+                  <div key={i} style={{ background: "var(--white)", border: "1px solid rgba(74,124,89,0.15)", borderRadius: "12px", padding: "2rem", display: "flex", alignItems: "center", gap: "1.5rem" }}>
+                    <img src={sup.image} alt={sup.name} style={{ width: "80px", height: "80px", borderRadius: "50%", objectFit: "cover", objectPosition: "center", flexShrink: 0 }} />
+                    <div>
+                      <h4 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700, color: "var(--forest)", marginBottom: "0.3rem" }}>{sup.name}</h4>
+                      <p style={{ fontSize: "0.88rem", color: "var(--fern)", fontWeight: 600, marginBottom: "0.2rem" }}>{sup.role}</p>
+                      <p style={{ fontSize: "0.8rem", color: "#6a8070" }}>Sri Lanka Institute of Information Technology</p>
+                    </div>
                   </div>
-                  <div>
-                    <div className="team-id">{m.id}</div>
-                    <div className="team-name">{m.name}</div>
-                    <div className="team-role">{m.role}</div>
-                  </div>
-                </div>
-                <div className="team-card-body">
-                  <p className="team-desc">{m.desc}</p>
-                  <div className="team-accuracy">
-                    <span>🎯</span> Expected accuracy: {m.accuracy}
-                  </div>
-                  <div className="tech-tags">
-                    {m.tech.map((t, j) => (
-                      <span className="tech-tag" key={j}>{t}</span>
-                    ))}
-                  </div>
-                </div>
+                ))}
+              </div>
+            </div>
+
+            {/* RESEARCH TEAM */}
+            <div>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", fontWeight: 700, color: "var(--forest)", marginBottom: "1.5rem", paddingBottom: "0.75rem", borderBottom: "2px solid rgba(74,124,89,0.2)" }}>Research Team</h3>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "2rem" }}>
+                {members.map((m, i) => {
+                  return (
+                    <div className="team-card" key={i} style={{ background: "var(--white)", border: "1px solid rgba(74,124,89,0.15)", borderRadius: "12px", padding: "1.5rem" }}>
+                      <div className="team-card-header" style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+                        <img src={m.image} alt={m.name} style={{ width: "80px", height: "80px", borderRadius: "50%", objectFit: "cover", flexShrink: 0 }} />
+                        <div style={{ flex: 1 }}>
+                          <div className="team-id">{m.id}</div>
+                          <div className="team-name">{m.name}</div>
+                          <div className="team-role">{m.role}</div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: "3rem", padding: "2rem", background: "rgba(74,124,89,0.05)", borderRadius: "12px", border: "1px solid rgba(74,124,89,0.1)" }}>
+            <p style={{ fontSize: "0.95rem", color: "#4a5e54", lineHeight: 1.7, fontWeight: 300 }}>
+              The CinoGrow research team collaborates seamlessly to deliver an integrated machine learning decision support system for cinnamon cultivation. Under expert supervision, the team combines expertise in deep learning, image processing, predictive modeling, mobile development, and backend engineering to create a unified platform that serves Sri Lankan cinnamon farmers with actionable insights and data-driven recommendations.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── MILESTONES ── */}
+      <section style={{ background: "linear-gradient(180deg, #f5f0e8 0%, #faf6f0 100%)" }} id="milestones">
+        <div className="section-inner">
+          <div className="section-label">Project Timeline</div>
+          <h2 className="section-title">Our Milestones</h2>
+          <p className="section-desc">Key achievements and deliverables tracking CinoGrow's development from conception to deployment, spanning September 2024 to June 2025.</p>
+          <div className="divider" />
+
+          <div className="tl-wrap">
+            <div className="tl-line" />
+            {milestones.map((m, i) => (
+              <div className="tl-row" key={i}>
+                {m.side === "left" ? (
+                  <>
+                    <div className="tl-left">
+                      <div className="tl-card">
+                        <div className="tl-badge">{m.month}</div>
+                        <h4 className="tl-title">{m.title}</h4>
+                        <p className="tl-desc">{m.desc}</p>
+                      </div>
+                    </div>
+                    <div className="tl-dot-col"><div className="tl-dot" /></div>
+                    <div className="tl-empty" />
+                  </>
+                ) : (
+                  <>
+                    <div className="tl-empty" />
+                    <div className="tl-dot-col"><div className="tl-dot" /></div>
+                    <div className="tl-right">
+                      <div className="tl-card">
+                        <div className="tl-badge">{m.month}</div>
+                        <h4 className="tl-title">{m.title}</h4>
+                        <p className="tl-desc">{m.desc}</p>
+                      </div>
+                    </div>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1.5rem" }}>
+            {[
+              { num: "200+", label: "Days Worked" },
+              { num: "10", label: "Documents" },
+              { num: "4", label: "Presentations" },
+              { num: "8", label: "Milestones" }
+            ].map((stat, i) => (
+              <div key={i} style={{ textAlign: "center", padding: "1.5rem", background: "var(--white)", borderRadius: "12px", border: "1px solid rgba(74,124,89,0.1)" }}>
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", fontWeight: 700, color: "var(--forest)", marginBottom: "0.5rem" }}>{stat.num}</div>
+                <p style={{ fontSize: "0.9rem", color: "var(--fern)", fontWeight: 600 }}>{stat.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Documentation & Research (new) */}
-      <section className="docs-section" id="research">
+      {/* ── DOCUMENTS ── */}
+      <section style={{ background: "var(--cream)" }} id="documents">
         <div className="section-inner">
-          <div className="section-label">Documentation & Research</div>
-          <h2 className="section-title">From proposal to<br />published research.</h2>
-          <p className="section-desc">Every phase of the CinoGrow project — proposal, progress reviews, final presentation, and individual research papers — documented and accessible.</p>
+          <div className="section-label">Deliverables</div>
+          <h2 className="section-title">Our Documents</h2>
+          <p className="section-desc">Complete collection of project proposals, presentations, research papers, and reports documenting the CinoGrow research journey.</p>
+          <div className="divider" />
 
-          {/* TIMELINE */}
-          <div className="timeline-wrap">
-            <div className="timeline-track">
-              {timeline.map((t, i) => (
-                <div className="timeline-node" key={i}>
-                  <div className="timeline-dot">{t.icon}</div>
-                  <div>
-                    <div className="timeline-label">{t.label}</div>
-                    <div className="timeline-sub">{t.sub}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* PHASE TABS */}
-          <div className="phase-tabs">
-            {phases.map((p) => (
-              <button
-                key={p.id}
-                className={`phase-tab ${activePhase === p.id ? "active" : ""}`}
-                onClick={() => setActivePhase(p.id)}
-              >
-                {p.icon} {p.label}
-              </button>
-            ))}
-          </div>
-
-          {/* DOC CARDS */}
-          <div className="doc-cards-grid">
-            {(docs[activePhase] as DocType[]).map((doc: DocType, i: number) => (
-              <a
+          <div style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "2rem", gridAutoRows: "auto" }}>
+            {documents.map((doc, i) => (
+              <div
                 key={i}
                 className="doc-card"
-                href={doc.link}
-                target="_blank"
-                rel="noopener noreferrer"
+                style={{
+                  padding: "2rem", background: "var(--white)", borderRadius: "12px",
+                  border: "1px solid rgba(74,124,89,0.15)", display: "flex", flexDirection: "column",
+                  alignItems: "center", justifyContent: "space-between",
+                  transition: "all 0.3s", cursor: "pointer", minHeight: "240px", textAlign: "center"
+                }}
               >
-                <div className="doc-card-top">
-                  <div className="doc-icon-wrap">{doc.icon}</div>
-                  <span className={`doc-type-badge ${doc.type}`}>{doc.typeLabel}</span>
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "1.5rem", flex: 1, justifyContent: "center" }}>
+                  <div style={{ fontSize: "3.5rem", opacity: 0.8 }}>📄</div>
+                  <h4 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.05rem", fontWeight: 700, color: "var(--forest)", margin: 0 }}>{doc.title}</h4>
                 </div>
-                <div className="doc-card-body">
-                  <div className="doc-title">{doc.title}</div>
-                  <div className="doc-author">{doc.author}</div>
-                  <div className="doc-desc">{doc.desc}</div>
-                </div>
-                <div className="doc-card-footer">
-                  <span className="doc-link-label">↗ {doc.linkLabel}</span>
-                  <span className="doc-link-arrow">→</span>
-                </div>
-              </a>
+                <a
+                  href={doc.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "block", width: "100%", background: "var(--fern)", color: "white",
+                    border: "none", padding: "0.65rem 1.5rem", borderRadius: "6px",
+                    fontSize: "0.85rem", fontWeight: 600, cursor: "pointer",
+                    transition: "all 0.2s", textDecoration: "none", textAlign: "center",
+                    marginTop: "1rem"
+                  }}
+                >
+                  View Document
+                </a>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* TECHNOLOGY */}
+      {/* ── TECHNOLOGY ── */}
       <section className="tech-section" id="technology">
         <div className="section-inner">
           <div className="section-label">Technical Architecture</div>
           <h2 className="section-title">Modern stack. Production<br />grade engineering.</h2>
           <p className="section-desc">Built with a scalable microservices architecture, containerized deployment, and CI/CD pipelines to serve real-time predictions at scale.</p>
-
           <div className="tech-overview">
             {[
-              {
-                title: "Machine Learning",
-                items: ["XGBoost (XGBRegressor)", "TensorFlow / Keras CNN", "Scikit-learn (Random Forest)", "OpenCV Image Processing", "Transfer Learning (ResNet/MobileNet)"],
-              },
-              {
-                title: "Backend & Infrastructure",
-                items: ["Python + FastAPI", "Docker Containerization", "GitHub Actions CI/CD", "PostgreSQL Database", "RESTful API Architecture"],
-              },
-              {
-                title: "Frontend & Integrations",
-                items: ["React Native + Expo", "OpenWeatherMap API", "Cloud Storage (Images)", "Real-time Notifications", "Multilingual (Sinhala)"],
-              },
+              { title: "Machine Learning", items: ["Scikit-learn", "XGBoost", "Random Forest Regression"] },
+              { title: "Image Processing ", items: ["Roboflow"] },
+              { title: "Backend & Infrastructure", items: ["FastAPI", "Docker", "PostgreSQL(AWS hosted)"] },
+              { title: "Frontend & Integrations", items: ["React Native + Expo", "OpenWeatherMap API", "Cloud Storage (Images)", "Real-time Notifications", "Multilingual (Sinhala/Tamil)"] },
+              { title: "Data Sources and Data Handling", items: ["Kaggle", "Pandas ", "NumPy "] },
+              { title: "Version Control", items: ["GitHub", "Docker ", "CI/CD Pipelines"] },
             ].map((g, i) => (
               <div className="tech-group" key={i}>
                 <div className="tech-group-title">{g.title}</div>
                 <ul className="tech-items">
-                  {g.items.map((item, j) => (
-                    <li key={j}>{item}</li>
-                  ))}
+                  {g.items.map((item, j) => <li key={j}>{item}</li>)}
                 </ul>
               </div>
             ))}
           </div>
-
           <div style={{ marginTop: "2rem", padding: "1.5rem 2rem", background: "rgba(74,124,89,0.07)", borderRadius: "10px", border: "1px solid rgba(74,124,89,0.15)" }}>
             <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", alignItems: "center" }}>
-              <div>
-                <div style={{ fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--fern)", marginBottom: "0.35rem" }}>Data Validation</div>
-                <div style={{ fontSize: "0.9rem", color: "var(--forest)" }}>80/20 train-test split across all models</div>
-              </div>
-              <div style={{ width: "1px", height: "40px", background: "rgba(74,124,89,0.2)" }} />
-              <div>
-                <div style={{ fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--fern)", marginBottom: "0.35rem" }}>Data Sources</div>
-                <div style={{ fontSize: "0.9rem", color: "var(--forest)" }}>National Cinnamon Research & Training Center + Field Data</div>
-              </div>
-              <div style={{ width: "1px", height: "40px", background: "rgba(74,124,89,0.2)" }} />
-              <div>
-                <div style={{ fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--fern)", marginBottom: "0.35rem" }}>Ethics</div>
-                <div style={{ fontSize: "0.9rem", color: "var(--forest)" }}>Farmer consent obtained · Data anonymized on aggregation</div>
-              </div>
+              {[
+                { label: "Data Validation", value: "80/20 train-test split across all models" },
+                { label: "Data Sources", value: "National Cinnamon Research & Training Center + Field Data" },
+                { label: "Ethics", value: "Farmer consent obtained · Data anonymized on aggregation" }
+              ].map((item, i) => (
+                <div key={i} style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+                  {i > 0 && <div style={{ width: "1px", height: "40px", background: "rgba(74,124,89,0.2)" }} />}
+                  <div>
+                    <div style={{ fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--fern)", marginBottom: "0.35rem" }}>{item.label}</div>
+                    <div style={{ fontSize: "0.9rem", color: "var(--forest)" }}>{item.value}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* COMMERCIALIZATION */}
+      {/* ── COMMERCIALIZATION ── */}
       <section className="commercial-section" id="commercialization">
         <div className="section-inner">
           <div className="section-label">Go to Market</div>
           <h2 className="section-title">From research to<br />real-world impact.</h2>
           <p className="section-desc">CinoGrow is positioned as the first all-in-one ML platform for cinnamon, targeting farmers, cooperatives, and research institutions across Sri Lanka.</p>
-
           <div className="commercial-grid">
             <div>
-              <div style={{ marginBottom: "1.5rem" }}>
-                <div style={{ fontSize: "0.8rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "1.25rem" }}>Subscription Plans</div>
-                <div className="pricing-cards">
-                  <div className="pricing-card">
-                    <div className="pricing-tier">Individual Farmer</div>
-                    <div><span className="pricing-price">Rs. 800</span> <span className="pricing-period">/month</span></div>
-                  </div>
-                  <div className="pricing-card featured">
-                    <div className="pricing-tier">🌟 Cooperative</div>
-                    <div><span className="pricing-price">Rs. 3,000</span> <span className="pricing-period">/month</span></div>
-                  </div>
-                  <div className="pricing-card">
-                    <div className="pricing-tier">Research Institution</div>
-                    <div><span className="pricing-price">Rs. 8,000</span> <span className="pricing-period">/month</span></div>
-                  </div>
+              <div style={{ fontSize: "0.8rem", fontWeight: 600, color: "rgba(255,255,255,0.4)", letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: "1.25rem" }}>Subscription Plans</div>
+              <div className="pricing-cards">
+                <div className="pricing-card">
+                  <div className="pricing-tier">Individual Farmer</div>
+                  <div><span className="pricing-price">Rs. 800</span> <span className="pricing-period">/month</span></div>
+                </div>
+                <div className="pricing-card featured">
+                  <div className="pricing-tier">Cooperative — Most Popular</div>
+                  <div><span className="pricing-price">Rs. 3,000</span> <span className="pricing-period">/month</span></div>
+                </div>
+                <div className="pricing-card">
+                  <div className="pricing-tier">Research Institution</div>
+                  <div><span className="pricing-price">Rs. 8,000</span> <span className="pricing-period">/month</span></div>
                 </div>
               </div>
-
               <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginTop: "1.5rem" }}>
                 {["Farmers", "Oil Extractors", "Cooperatives", "Research Institutes", "NGOs"].map((t, i) => (
                   <span key={i} style={{ fontSize: "0.78rem", padding: "0.3rem 0.75rem", borderRadius: "100px", background: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.1)" }}>{t}</span>
                 ))}
               </div>
             </div>
-
             <div className="value-props">
               {[
-                { icon: "🏆", title: "Platform Copyright", desc: "Full IP ownership and potential patent registration for the CinoGrow system." },
-                { icon: "🎯", title: "Precise Recommendations", desc: "Accurate fertilizer guidance, pest detection, oil yield prediction, and weather-informed planning." },
-                { icon: "🌐", title: "Sinhala Language Support", desc: "Fine-tuned open-source NLP model for native language accessibility." },
-                { icon: "📈", title: "Self-Improving Models", desc: "Continuous learning loop — each farmer interaction improves prediction accuracy." },
+                { label: "IP", title: "Platform Copyright", desc: "Full IP ownership and potential patent registration for the CinoGrow system." },
+                { label: "AI", title: "Precise Recommendations", desc: "Accurate fertilizer guidance, pest detection, oil yield prediction, and weather-informed planning." },
+                { label: "LK", title: "Sinhala Language Support", desc: "Fine-tuned open-source NLP model for native language accessibility." },
+                { label: "+", title: "Self-Improving Models", desc: "Continuous learning loop — each farmer interaction improves prediction accuracy." },
               ].map((v, i) => (
                 <div className="value-prop" key={i}>
-                  <div className="value-prop-icon">{v.icon}</div>
+                  <div className="value-prop-icon">{v.label}</div>
                   <div className="value-prop-text">
                     <strong>{v.title}</strong>
                     {v.desc}
@@ -1858,26 +1209,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FOOTER */}
+      {/* ── FOOTER ── */}
       <footer>
         <div className="footer-inner">
           <div className="footer-top">
             <div>
-              <div className="footer-brand">Cino<span>Grow</span></div>
+              <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
+                <img src="/assets/logo.png" alt="CinoGrow" style={{ height: "50px", width: "auto" }} />
+                <div className="footer-brand">Cino<span>Grow</span></div>
+              </div>
               <div className="footer-tagline">Transforming cinnamon production in Sri Lanka by empowering farmers with smart, sustainable, data-driven solutions.</div>
             </div>
             <div className="footer-info">
               <strong>SLIIT Faculty of Computing</strong>
               Group No: 25-26J-338<br />
-              Presented: 09 September 2025<br />
               Specialization: Information Technology
             </div>
           </div>
           <div className="footer-bottom">
             <span>© 2025 CinoGrow · SLIIT Research Project</span>
-            <span>
-              N.A.D. Nimsara · Jayawardana N.G.U.D. · Udayakumara W.D.L. · Malmi W.U.
-            </span>
+            <span>N.A.D. Nimsara · Jayawardana N.G.U.D. · Udayakumara W.D.L. · Malmi W.U.</span>
           </div>
         </div>
       </footer>
