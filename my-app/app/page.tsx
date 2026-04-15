@@ -91,7 +91,7 @@ export default function Home() {
           --fern: #4a7c59;
           --sage: #7aab8a;
           --mist: #c8ddd0;
-          --cream: #f5f0e8;
+          --cream: #ffffff;
           --gold: #c8a84b;
           --bark: #6b4c2a;
           --white: #ffffff;
@@ -176,9 +176,11 @@ export default function Home() {
           margin: 0 auto;
           width: 100%;
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
           gap: 4rem;
           align-items: center;
+          justify-items: center;
+          text-align: center;
         }
         .hero-badge {
           display: inline-flex;
@@ -209,11 +211,11 @@ export default function Home() {
           font-size: 1.05rem;
           color: rgba(255,255,255,0.70);
           line-height: 1.7;
-          margin-bottom: 2.5rem;
+          margin: 0 auto 2.5rem;
           font-weight: 300;
           max-width: 480px;
         }
-        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
         .btn-primary {
           display: inline-flex; align-items: center; gap: 0.5rem;
           background: var(--gold); color: var(--forest);
@@ -235,8 +237,9 @@ export default function Home() {
 
         .hero-content {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1fr;
   align-items: center;
+  justify-items: center;
   gap: 40px;
 }
 
@@ -724,8 +727,7 @@ export default function Home() {
             </div>
             <h1 className="hero-title animate-in delay-1">
               <em>Smart farming</em><br />
-              for Ceylon<br />
-              Cinnamon
+              for Ceylon Cinnamon
             </h1>
             <p className="hero-sub animate-in delay-2">
               CinoGrow is the world's first ML-based decision support system built exclusively for cinnamon cultivation — covering yield, fertilizer, disease detection, weather, and oil production.
@@ -735,16 +737,7 @@ export default function Home() {
               <a href="#team" className="btn-outline">Meet the Team</a>
             </div>
           </div>
-
-          {/* RIGHT: blended image */}
-<div className="hero-image-wrapper">
-  <img
-    src="/assets/cinnamon right header.webp"
-    alt="CinoGrow System Architecture Diagram"
-    className="hero-image"
-  />
-</div>
-</div>
+        </div>
         <div className="scroll-line">Scroll</div>
       </section>
 
@@ -904,17 +897,17 @@ export default function Home() {
             ].map((item, i) => {
               const images = ['fertilizer.png', 'pest.png', 'oil.png', 'yield.png'];
               return (
-              <div className="problem-card" key={i} style={{ display: "flex", flexDirection: "column" }}>
-                <div className="problem-card-image-wrap" style={{ width: "100%", height: "240px", overflow: "hidden", position: "relative" }}>
-                  <img src={`/assets/${images[i]}`} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                <div className="problem-card" key={i} style={{ display: "flex", flexDirection: "column" }}>
+                  <div className="problem-card-image-wrap" style={{ width: "100%", height: "240px", overflow: "hidden", position: "relative" }}>
+                    <img src={`/assets/${images[i]}`} alt={item.title} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  </div>
+                  <div className="problem-card-body">
+                    <div className="problem-num">Challenge 0{i + 1}</div>
+                    <h3 className="problem-title">{item.title}</h3>
+                    <p className="problem-text">{item.desc}</p>
+                  </div>
                 </div>
-                <div className="problem-card-body">
-                  <div className="problem-num">Challenge 0{i + 1}</div>
-                  <h3 className="problem-title">{item.title}</h3>
-                  <p className="problem-text">{item.desc}</p>
-                </div>
-              </div>
-            );
+              );
             })}
 
             <div className="problem-impact-card" style={{ background: "linear-gradient(135deg, rgba(74,124,89,0.08), rgba(122,171,138,0.05))", borderRadius: "16px", padding: "3rem", border: "1px solid rgba(74,124,89,0.15)" }}>
