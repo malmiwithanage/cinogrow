@@ -16,25 +16,37 @@ export default function Home() {
       id: "IT22889324",
       name: "Udayakumara W.D.L.",
       role: "Stage-Based Disease & Pest Detection",
+      jobTitle: "Software Engineer",
       image: "/assets/Udayakumara.png",
+      email: "udayakumara.wdl@gmail.com",
+      linkedin: "https://www.linkedin.com/in/lahiruudayakumara/",
     },
     {
       id: "IT22319692",
       name: "N. A. D. Nimsara",
       role: "Fertilizer Recommendation System",
+      jobTitle: "UI/UX Designer & Front End Developer",
       image: "/assets/Nimsara.png",
+      email: "nimsaraduvindu@gmail.com",
+      linkedin: "https://www.linkedin.com/in/duvindu-nimsara/",
     },
     {
       id: "IT22308498",
       name: "Jayawardana N.G.U.D.",
       role: "Yield Prediction & Weather Support",
+      jobTitle: "Business Analyst",
       image: "/assets/Jayawardana.png",
+      email: "udaridevindi@gmail.com",
+      linkedin: "https://www.linkedin.com/in/udari-devindi-724496246/",
     },
     {
       id: "IT22312044",
       name: "Malmi W.U.",
       role: "Oil Yield Prediction & Distillation Support",
+      jobTitle: "Associate Software Engineer",
       image: "/assets/Malmi.png",
+      email: "malmi@example.com",
+      linkedin: "https://www.linkedin.com/in/malmi-withanage/",
     },
   ];
 
@@ -992,7 +1004,20 @@ export default function Home() {
                           <div className="team-id">{m.id}</div>
                           <div className="team-name">{m.name}</div>
                           <div className="team-role">{m.role}</div>
+                          <div style={{ fontSize: "0.82rem", color: "#2e7d32", fontWeight: 600, marginTop: "0.25rem" }}>{m.jobTitle}</div>
                         </div>
+                      </div>
+                      <div style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: "1px solid rgba(74,124,89,0.1)", display: "flex", gap: "1rem", alignItems: "center" }}>
+                        <a href={`mailto:${m.email}`} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontSize: "0.85rem", color: "#2e7d32", textDecoration: "none", fontWeight: 500 }} title="Email">
+                          <span>✉</span>
+                          <span>{m.email}</span>
+                        </a>
+                      </div>
+                      <div style={{ marginTop: "0.75rem", display: "flex", gap: "1rem", alignItems: "center" }}>
+                        <a href={m.linkedin} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontSize: "0.85rem", color: "#2e7d32", textDecoration: "none", fontWeight: 500 }} title="LinkedIn">
+                          <span>in</span>
+                          <span>LinkedIn Profile</span>
+                        </a>
                       </div>
                     </div>
                   );
