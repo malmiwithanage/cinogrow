@@ -43,7 +43,7 @@ export default function Home() {
       id: "IT22312044",
       name: "Malmi W.U.",
       role: "Oil Yield Prediction & Distillation Support",
-      jobTitle: "Associate Software Engineer",
+      jobTitle: "Software Engineer",
       image: "/assets/Malmi.png",
       email: "malmi@example.com",
       linkedin: "https://www.linkedin.com/in/malmi-withanage/",
