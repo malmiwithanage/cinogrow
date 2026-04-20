@@ -45,7 +45,7 @@ export default function Home() {
       role: "Oil Yield Prediction & Distillation Support",
       jobTitle: "Software Engineer",
       image: "/assets/Malmi.png",
-      email: "malmi@example.com",
+      email: "malmiwithanage@gmail.com",
       linkedin: "https://www.linkedin.com/in/malmi-withanage/",
     },
   ];
@@ -117,6 +117,8 @@ export default function Home() {
           background: var(--cream);
           color: var(--ink);
           overflow-x: hidden;
+          line-height: 1.6;
+          -webkit-font-smoothing: antialiased;
         }
 
         /* ── NAV ── */
@@ -142,16 +144,19 @@ export default function Home() {
         .nav-links { display: flex; gap: 2.5rem; list-style: none; }
         .nav-links a {
           text-decoration: none;
-          font-size: 0.85rem;
+          font-size: 0.9rem;
           font-weight: 500;
           letter-spacing: 0.08em;
           text-transform: uppercase;
           opacity: 0.85;
-          transition: opacity 0.2s;
+          transition: opacity 0.3s ease, color 0.3s ease;
+          padding: 0.5rem 0.75rem;
+          border-radius: 4px;
         }
-        .nav-links a { color: rgba(255,255,255,0.85); }
+        .nav-links a { color: rgba(255,255,255,0.9); }
         .nav-links.scrolled a { color: var(--forest); }
         .nav-links a:hover { opacity: 1; }
+        .nav-links a:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
 
         /* ── HERO ── */
         .hero {
@@ -231,21 +236,23 @@ export default function Home() {
         .btn-primary {
           display: inline-flex; align-items: center; gap: 0.5rem;
           background: var(--gold); color: var(--forest);
-          padding: 0.85rem 2rem; border-radius: 4px;
-          font-weight: 600; font-size: 0.9rem;
+          padding: 1rem 2.25rem; border-radius: 6px;
+          font-weight: 600; font-size: 1rem;
           text-decoration: none; letter-spacing: 0.02em;
-          transition: all 0.2s; border: none; cursor: pointer;
+          transition: all 0.3s ease; border: 2px solid transparent; cursor: pointer;
         }
-        .btn-primary:hover { background: #d4b460; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,168,75,0.4); }
+        .btn-primary:hover { background: #d4b460; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(200,168,75,0.5); }
+        .btn-primary:focus { outline: 2px solid var(--forest); outline-offset: 2px; }
         .btn-outline {
           display: inline-flex; align-items: center; gap: 0.5rem;
           background: transparent; color: var(--white);
-          padding: 0.85rem 2rem; border-radius: 4px;
-          font-weight: 500; font-size: 0.9rem;
+          padding: 1rem 2.25rem; border-radius: 6px;
+          font-weight: 500; font-size: 1rem;
           text-decoration: none; letter-spacing: 0.02em;
-          transition: all 0.2s; border: 1px solid rgba(255,255,255,0.3); cursor: pointer;
+          transition: all 0.3s ease; border: 2px solid rgba(255,255,255,0.5); cursor: pointer;
         }
-        .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.55); }
+        .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.8); }
+        .btn-outline:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
 
         .hero-content {
   display: grid;
@@ -333,12 +340,12 @@ export default function Home() {
         .section-title {
           font-family: 'Playfair Display', serif;
           font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
-          color: var(--forest); line-height: 1.15;
-          letter-spacing: -1.5px; margin-bottom: 1rem;
+          color: var(--forest); line-height: 1.2;
+          letter-spacing: -1.5px; margin-bottom: 1.5rem;
         }
         .section-desc {
-          font-size: 1.05rem; color: #4a5e54;
-          line-height: 1.7; max-width: 600px; font-weight: 300;
+          font-size: 1.1rem; color: #3d4f47;
+          line-height: 1.75; max-width: 650px; font-weight: 400;
         }
         .divider {
           width: 60px; height: 3px;
@@ -386,8 +393,8 @@ export default function Home() {
           line-height: 1.25;
         }
         .problem-text {
-          font-size: 0.88rem; color: #4a5e54;
-          line-height: 1.65; font-weight: 300;
+          font-size: 0.95rem; color: #3d4f47;
+          line-height: 1.7; font-weight: 400;
         }
         .problem-impact-card {
           grid-column: span 2;
@@ -455,7 +462,7 @@ export default function Home() {
           font-size: 1.15rem; font-weight: 700;
           color: var(--white); margin-bottom: 0.75rem;
         }
-        .feature-desc { font-size: 0.875rem; color: rgba(255,255,255,0.5); line-height: 1.65; font-weight: 300; }
+        .feature-desc { font-size: 0.95rem; color: rgba(255,255,255,0.65); line-height: 1.7; font-weight: 400; }
 
         /* ── TEAM ── */
         .team-section { background: linear-gradient(180deg, #f0ebe0 0%, var(--cream) 100%); }
@@ -482,7 +489,7 @@ export default function Home() {
         .team-name { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--forest); line-height: 1.2; margin-bottom: 0.25rem; }
         .team-role { font-size: 0.82rem; color: var(--fern); font-weight: 500; }
         .team-card-body { padding: 1.5rem 2rem; }
-        .team-desc { font-size: 0.875rem; color: #4a5e54; line-height: 1.65; margin-bottom: 1.25rem; font-weight: 300; }
+        .team-desc { font-size: 0.95rem; color: #3d4f47; line-height: 1.7; margin-bottom: 1.25rem; font-weight: 400; }
         .team-accuracy {
           display: inline-flex; align-items: center; gap: 0.4rem;
           background: rgba(74,124,89,0.08); color: var(--moss);
@@ -569,7 +576,7 @@ export default function Home() {
           color: var(--forest); margin-bottom: 0.4rem;
           line-height: 1.3;
         }
-        .tl-desc { font-size: 0.8rem; color: var(--sage); line-height: 1.55; font-weight: 300; }
+        .tl-desc { font-size: 0.9rem; color: #5a7a6a; line-height: 1.65; font-weight: 400; }
 
         /* ── TECH STACK ── */
         .tech-section { background: var(--cream); }
@@ -687,8 +694,8 @@ export default function Home() {
         @media (max-width: 900px) {
           nav { padding: 1rem 1.5rem; }
           .nav-links { display: none; }
-          section { padding: 5rem 1.5rem; }
-          .hero { padding: 7rem 1.5rem 3rem; }
+          section { padding: 4.5rem 1.5rem; }
+          .hero { padding: 6rem 1.5rem 3rem; }
           .hero-content { grid-template-columns: 1fr; gap: 3rem; }
           .hero-right { display: none; }
           .problem-grid { grid-template-columns: 1fr; }
@@ -700,11 +707,15 @@ export default function Home() {
           .footer-top { flex-direction: column; gap: 1.5rem; }
           .footer-info { text-align: left; }
           .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
+          .btn-primary, .btn-outline { padding: 0.95rem 2rem; font-size: 0.95rem; }
         }
         @media (max-width: 600px) {
           .features-grid { grid-template-columns: 1fr; }
           .tech-overview { grid-template-columns: 1fr; }
           .problem-grid { grid-template-columns: 1fr; }
+          .btn-primary, .btn-outline { width: 100%; padding: 1rem; font-size: 1rem; }
+          section { padding: 3.5rem 1rem; }
+          .nav-logo { font-size: 1.2rem; }
         }
       `}</style>
 
@@ -1143,7 +1154,7 @@ export default function Home() {
           <p className="section-desc">Built with a scalable microservices architecture, containerized deployment, and CI/CD pipelines to serve real-time predictions at scale.</p>
           <div className="tech-overview">
             {[
-              { title: "Machine Learning", items: ["Scikit-learn", "XGBoost", "Random Forest Regression"] },
+              { title: "Machine Learning", items: ["Scikit-learn", "XGBoost", "ARIMA", "Random Forest Regression"] },
               { title: "Image Processing ", items: ["Roboflow"] },
               { title: "Backend & Infrastructure", items: ["FastAPI", "Docker", "PostgreSQL(AWS hosted)"] },
               { title: "Frontend & Integrations", items: ["React Native + Expo", "OpenWeatherMap API", "Cloud Storage (Images)", "Real-time Notifications", "Multilingual (Sinhala/Tamil)"] },
@@ -1162,7 +1173,7 @@ export default function Home() {
             <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap", alignItems: "center" }}>
               {[
                 { label: "Data Validation", value: "80/20 train-test split across all models" },
-                { label: "Data Sources", value: "National Cinnamon Research & Training Center + Field Data" },
+                { label: "Data Sources", value: "National Cinnamon Research & Training Center + Field Data, Economic Research Unit, Department of Export Agriculture: (https://exagri.info/mkt/index.html)" },
                 { label: "Ethics", value: "Farmer consent obtained · Data anonymized on aggregation" }
               ].map((item, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
