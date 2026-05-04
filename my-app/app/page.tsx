@@ -1093,7 +1093,7 @@ export default function Home() {
               { num: "200+", label: "Days Worked" },
               { num: "10", label: "Documents" },
               { num: "4", label: "Presentations" },
-              { num: "8", label: "Milestones" }
+              { num: "10", label: "Milestones" }
             ].map((stat, i) => (
               <div key={i} style={{ textAlign: "center", padding: "1.5rem", background: "var(--white)", borderRadius: "12px", border: "1px solid rgba(74,124,89,0.1)" }}>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.5rem", fontWeight: 700, color: "var(--forest)", marginBottom: "0.5rem" }}>{stat.num}</div>
