@@ -78,6 +78,8 @@ export default function Home() {
     { month: "6th May 2026", title: "Final Presentation and Viva", desc: "Individual and group assessment.", side: "right" },
     { month: "6th May 2026", title: "Website Assessment", desc: "Public research dissemination.", side: "left" },
     { month: "6th May 2026", title: "Logbook Submission", desc: "Project documentation and progress validation.", side: "right" },
+    { month: "13th May 2026", title: "Final Thesis Submission", desc: "Complete thesis documentation and submission.", side: "left" },
+    { month: "15th June 2026", title: "Research Paper Publication Evidence", desc: "Submit evidence of research paper publication.", side: "right" },
   ];
 
   const documents = [
