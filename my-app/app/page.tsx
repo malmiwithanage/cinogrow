@@ -81,13 +81,13 @@ export default function Home() {
   ];
 
   const documents = [
-    { title: "Project Proposal", href: "#" },
-    { title: "Checklist 1", href: "https://drive.google.com/drive/folders/1mCAk48nYa5FuWk9TTrsDD0mohRL5en0j?usp=sharing" },
-    { title: "Progress Presentation - 1", href: "https://docs.google.com/presentation/d/1OVgnjAQvKdpIQSpeOWP39mOmEBx68j6U/edit?usp=sharing&ouid=107772606799815702297&rtpof=true&sd=true" },
+    { title: "Project Proposal", href: "https://drive.google.com/drive/folders/1YaZrzMXIkn1NG0HsrT8mIARBVUFQc_ho" },
+    { title: "Checklist 1", href: "https://drive.google.com/drive/folders/1Xue1jWuSXWUXE-h6sDlVjq8pPdNukUIb?usp=sharing" },
+    { title: "Progress Presentation - 1", href: "https://drive.google.com/file/d/1USebwi98WGmgTetNZ5Uppd-d1h0phydd/view?usp=sharing" },
+    { title: "Progress Presentation - 2", href: "https://drive.google.com/file/d/1KxQvXsZhFrd7EY1PC43h1CNPxvM9Knhz/view?usp=sharing" },
+    { title: "Final Report & Presentation", href: "https://drive.google.com/drive/folders/1KltGdBX7EubXECDrSngbb_gvo_p2wJet?usp=sharing" },
+    { title: "Checklist 2", href: "https://drive.google.com/drive/folders/1Yl10rMniYXg_7dY_idzDr5U7t5EFhgYU?usp=sharing" },
     { title: "Research Paper", href: "#" },
-    { title: "Progress Presentation - 2", href: "#" },
-    { title: "Final Report & Presentation", href: "#" },
-    { title: "Checklist 2", href: "#" },
   ];
 
   return (
