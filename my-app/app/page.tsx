@@ -70,14 +70,14 @@ export default function Home() {
   ];
 
   const milestones = [
-    { month: "September 2024", title: "Project Proposal", desc: "Problem identification, literature review, and system design.", side: "left" },
-    { month: "December 2024", title: "Progress Presentation I", desc: "Data collection and initial model development.", side: "right" },
-    { month: "March 2025", title: "Progress Presentation II", desc: "Model training, validation, and integration testing.", side: "left" },
-    { month: "March 2025", title: "Research Paper Submission", desc: "Individual contributions to cinnamon-focused AI research.", side: "right" },
-    { month: "April 2025", title: "Final Report", desc: "Comprehensive evaluation of system performance and findings.", side: "left" },
-    { month: "May 2025", title: "Final Presentation and Viva", desc: "Individual and group assessment.", side: "right" },
-    { month: "May 2025", title: "Website Assessment", desc: "Public research dissemination.", side: "left" },
-    { month: "June 2025", title: "Logbook Submission", desc: "Project documentation and progress validation.", side: "right" },
+    { month: "9th September 2025", title: "Project Proposal", desc: "Problem identification, literature review, and system design.", side: "left" },
+    { month: "6th January 2026", title: "Progress Presentation I", desc: "Data collection and initial model development.", side: "right" },
+    { month: "10th March 2026", title: "Progress Presentation II", desc: "Model training, validation, and integration testing.", side: "left" },
+    { month: "08th May 2026", title: "Research Paper Submission", desc: "Individual contributions to cinnamon-focused AI research.", side: "right" },
+    { month: "13th May 2026", title: "Final Report", desc: "Comprehensive evaluation of system performance and findings.", side: "left" },
+    { month: "6th May 2026", title: "Final Presentation and Viva", desc: "Individual and group assessment.", side: "right" },
+    { month: "6th May 2026", title: "Website Assessment", desc: "Public research dissemination.", side: "left" },
+    { month: "6th May 2026", title: "Logbook Submission", desc: "Project documentation and progress validation.", side: "right" },
   ];
 
   const documents = [
