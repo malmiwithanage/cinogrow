@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -155,6 +156,71 @@ export default function Home() {
         .nav-links.scrolled a { color: var(--forest); }
         .nav-links a:hover { opacity: 1; }
         .nav-links a:focus { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+        /* Mobile Menu Button */
+        .mobile-menu-toggle {
+          display: none;
+          flex-direction: column;
+          gap: 0.4rem;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0.5rem;
+          z-index: 101;
+        }
+        .mobile-menu-toggle span {
+          width: 24px;
+          height: 2px;
+          background: currentColor;
+          border-radius: 2px;
+          transition: all 0.3s ease;
+        }
+        .mobile-menu-toggle.active span:nth-child(1) {
+          transform: rotate(45deg) translate(10px, 10px);
+        }
+        .mobile-menu-toggle.active span:nth-child(2) {
+          opacity: 0;
+        }
+        .mobile-menu-toggle.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Mobile Navigation Menu */
+        .mobile-menu {
+          display: none;
+          position: fixed;
+          top: 60px;
+          left: 0;
+          right: 0;
+          background: rgba(245, 240, 232, 0.98);
+          backdrop-filter: blur(10px);
+          flex-direction: column;
+          gap: 0;
+          list-style: none;
+          padding: 1rem 0;
+          z-index: 99;
+          border-bottom: 1px solid rgba(74, 124, 89, 0.1);
+        }
+        .mobile-menu.active {
+          display: flex;
+        }
+        .mobile-menu li {
+          border-bottom: 1px solid rgba(74, 124, 89, 0.08);
+        }
+        .mobile-menu a {
+          display: block;
+          padding: 1rem 1.5rem;
+          text-decoration: none;
+          font-size: 0.9rem;
+          font-weight: 500;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--forest);
+          transition: background 0.2s ease;
+        }
+        .mobile-menu a:hover {
+          background: rgba(74, 124, 89, 0.08);
+        }
 
         /* ── HERO ── */
         .hero {
@@ -689,31 +755,148 @@ export default function Home() {
         }
 
         /* ── RESPONSIVE ── */
-        @media (max-width: 900px) {
-          nav { padding: 1rem 1.5rem; }
+        @media (max-width: 1024px) {
+          nav { padding: 1rem 2rem; }
+          section { padding: 5rem 2rem; }
+          .hero { padding: 7rem 2rem 3rem; }
+          .features-grid { grid-template-columns: repeat(2, 1fr); }
+          .commercial-grid { grid-template-columns: 1fr; }
+          .tech-overview { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+          /* Navigation */
+          nav { padding: 1rem 1rem; }
+          .nav-logo { font-size: 1.2rem; }
           .nav-links { display: none; }
-          section { padding: 4.5rem 1.5rem; }
-          .hero { padding: 6rem 1.5rem 3rem; }
-          .hero-content { grid-template-columns: 1fr; gap: 3rem; }
-          .hero-right { display: none; }
+          .mobile-menu-toggle { display: flex; color: rgba(255,255,255,0.9); }
+          .mobile-menu-toggle.scrolled { color: var(--forest); }
+          
+          /* Hero */
+          section { padding: 4rem 1.5rem; }
+          .hero { padding: 5rem 1.5rem 2rem; }
+          .hero-content { gap: 2.5rem; }
+          .hero-title { font-size: clamp(2rem, 4.5vw, 3rem); }
+          .hero-sub { font-size: 0.95rem; max-width: 100%; }
+          .hero-cta { flex-direction: column; }
+          .btn-primary, .btn-outline { width: 100%; padding: 0.95rem 1.5rem; }
+          
+          /* Grids */
           .problem-grid { grid-template-columns: 1fr; }
           .problem-impact-card { grid-column: span 1; }
           .impact-inner { grid-template-columns: 1fr; }
-          .features-grid { grid-template-columns: 1fr 1fr; }
-          .tech-overview { grid-template-columns: 1fr 1fr; }
-          .commercial-grid { grid-template-columns: 1fr; }
-          .footer-top { flex-direction: column; gap: 1.5rem; }
-          .footer-info { text-align: left; }
-          .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
-          .btn-primary, .btn-outline { padding: 0.95rem 2rem; font-size: 0.95rem; }
-        }
-        @media (max-width: 600px) {
           .features-grid { grid-template-columns: 1fr; }
           .tech-overview { grid-template-columns: 1fr; }
-          .problem-grid { grid-template-columns: 1fr; }
-          .btn-primary, .btn-outline { width: 100%; padding: 1rem; font-size: 1rem; }
-          section { padding: 3.5rem 1rem; }
-          .nav-logo { font-size: 1.2rem; }
+          
+          /* Sections */
+          .section-title { font-size: clamp(1.5rem, 3.5vw, 2.5rem); }
+          .section-desc { font-size: 1rem; }
+          
+          /* Team */
+          .team-card-header { flex-direction: column; text-align: center; }
+          
+          /* Timeline */
+          .tl-wrap { padding: 0; }
+          .tl-line { display: none; }
+          .tl-row { grid-template-columns: 1fr; }
+          .tl-dot-col { display: none; }
+          .tl-left, .tl-right { margin-left: 0 !important; margin-right: 0 !important; }
+          .tl-card { margin-top: 0.5rem; }
+          .tl-card { padding-left: 2rem; position: relative; }
+          .tl-card::before { content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 100%; background: var(--fern); border-radius: 2px; }
+          
+          /* Footer */
+          .footer-top { flex-direction: column; }
+          .footer-info { text-align: left; }
+          .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+          
+          /* Supervisors & Team Grid */
+          > [style*="display: grid"] { grid-template-columns: 1fr !important; }
+        }
+
+        @media (max-width: 480px) {
+          /* General */
+          html { font-size: 14px; }
+          nav { padding: 0.75rem 1rem; }
+          .nav-logo { font-size: 1rem; }
+          section { padding: 3rem 1rem; }
+          .hero { padding: 4rem 1rem 2rem; }
+          
+          /* Typography */
+          .hero-badge { font-size: 0.65rem; padding: 0.35rem 0.8rem; }
+          .hero-title { font-size: clamp(1.5rem, 5vw, 2.5rem); margin-bottom: 1rem; }
+          .section-title { font-size: clamp(1.3rem, 3vw, 2rem); }
+          .section-label { font-size: 0.65rem; }
+          
+          /* Buttons */
+          .btn-primary, .btn-outline { 
+            width: 100%; 
+            padding: 0.85rem 1rem; 
+            font-size: 0.9rem;
+            min-height: 44px;
+          }
+          
+          /* Cards */
+          .problem-card-image-wrap { height: 160px; }
+          .feature-card { padding: 1.5rem 1rem; }
+          .tech-group { padding: 1.5rem 1rem; }
+          
+          /* Text sizing */
+          .feature-title { font-size: 1rem; }
+          .feature-desc { font-size: 0.85rem; }
+          .team-name { font-size: 1rem; }
+          
+          /* Gap reductions */
+          .problem-grid { gap: 1rem; }
+          .features-grid { gap: 1rem; }
+          .tech-overview { gap: 1rem; }
+          
+          /* Timeline mobile */
+          .tl-badge { font-size: 0.6rem; left: 2rem; }
+          .tl-title { font-size: 0.95rem; }
+          .tl-desc { font-size: 0.85rem; }
+          
+          /* Statistics grid */
+          > [style*="grid-template-columns: repeat(4"] { 
+            grid-template-columns: repeat(2, 1fr) !important; 
+          }
+          
+          /* Documents grid */
+          > [style*="grid-template-columns: repeat(4"] { 
+            grid-template-columns: 1fr !important; 
+          }
+          
+          /* Footer */
+          .footer-inner { text-align: center; }
+          .footer-brand { font-size: 1.5rem; }
+          .footer-tagline { max-width: 100%; }
+          .footer-info { margin-top: 1rem; }
+          
+          /* Hero wrapper adjustments */
+          .hero-image-wrapper {
+            width: 100%;
+            margin-left: 0;
+          }
+          
+          .hero-image {
+            transform: scale(1);
+          }
+          
+          /* System diagram */
+          .system-diagram-img {
+            width: 100%;
+            padding: 1rem;
+          }
+        }
+
+        @media (max-width: 360px) {
+          html { font-size: 13px; }
+          nav { padding: 0.5rem 0.75rem; }
+          section { padding: 2.5rem 0.75rem; }
+          .hero { padding: 3.5rem 0.75rem 1.5rem; }
+          
+          .hero-title { font-size: clamp(1.3rem, 4.5vw, 2rem); }
+          .btn-primary, .btn-outline { font-size: 0.85rem; padding: 0.75rem 0.85rem; }
         }
       `}</style>
 
@@ -734,6 +917,30 @@ export default function Home() {
           <li><a href="#team">Team</a></li>
           <li><a href="#milestones">Milestones</a></li>
           <li><a href="#documents">Documents</a></li>
+        </ul>
+
+        {/* Mobile Menu Toggle */}
+        <button
+          className={`mobile-menu-toggle ${mobileMenuOpen ? "active" : ""} ${scrollY > 60 ? "scrolled" : ""}`}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+          style={{
+            color: scrollY > 60 ? "var(--forest)" : "rgba(255,255,255,0.9)"
+          }}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        {/* Mobile Menu */}
+        <ul className={`mobile-menu ${mobileMenuOpen ? "active" : ""}`}>
+          <li><a href="#research-overview" onClick={() => setMobileMenuOpen(false)}>Our Research</a></li>
+          <li><a href="#problem" onClick={() => setMobileMenuOpen(false)}>Problem</a></li>
+          <li><a href="#features" onClick={() => setMobileMenuOpen(false)}>Features</a></li>
+          <li><a href="#team" onClick={() => setMobileMenuOpen(false)}>Team</a></li>
+          <li><a href="#milestones" onClick={() => setMobileMenuOpen(false)}>Milestones</a></li>
+          <li><a href="#documents" onClick={() => setMobileMenuOpen(false)}>Documents</a></li>
         </ul>
       </nav>
 
@@ -771,7 +978,7 @@ export default function Home() {
           <div className="divider" />
 
           <div style={{ marginTop: "3.5rem" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem", alignItems: "start" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "3rem", alignItems: "start" }}>
               <div>
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.35rem", fontWeight: 700, color: "var(--forest)", marginBottom: "1rem" }}>Project Scope</h3>
                 <p style={{ fontSize: "0.95rem", color: "#4a5e54", lineHeight: 1.7, marginBottom: "1.25rem", fontWeight: 300 }}>Our research covers four major agricultural domains through integrated machine learning:</p>
@@ -807,7 +1014,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem" }}>
+          <div style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "3rem" }}>
             <div style={{ background: "rgba(74,124,89,0.04)", padding: "2rem", borderRadius: "12px", border: "1px solid rgba(74,124,89,0.1)" }}>
               <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.15rem", fontWeight: 700, color: "var(--forest)", marginBottom: "1.25rem" }}>Literature Review</h3>
               <ul style={{ listStyle: "none", display: "flex", flexDirection: "column", gap: "0.75rem" }}>
@@ -855,7 +1062,7 @@ export default function Home() {
 
           <div style={{ marginTop: "4rem" }}>
             <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.35rem", fontWeight: 700, color: "var(--forest)", marginBottom: "2rem" }}>Specific Research Objectives</h3>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1.5rem" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "1.5rem" }}>
               {[
                 { title: "Fertilizer Recommendation", desc: "Develop a dual-image analysis model using soil and leaf photographs to detect nutrient deficiencies and recommend precise fertilizer applications." },
                 { title: "Disease & Pest Detection", desc: "Design a stage-aware CNN-based classification system to detect cinnamon diseases with actionable treatment guidance." },
@@ -932,7 +1139,7 @@ export default function Home() {
             })}
 
             <div className="problem-impact-card" style={{ background: "linear-gradient(135deg, rgba(74,124,89,0.08), rgba(122,171,138,0.05))", borderRadius: "16px", padding: "3rem", border: "1px solid rgba(74,124,89,0.15)" }}>
-              <div className="impact-inner" style={{ display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "3rem", alignItems: "center" }}>
+              <div className="impact-inner" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "3rem", alignItems: "center" }}>
                 <div>
                   <div style={{ fontSize: "0.72rem", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "0.75rem" }}>Research Impact</div>
                   <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.6rem", fontWeight: 700, marginBottom: "0.5rem", lineHeight: 1.2, color: "var(--forest)" }}>Empowering 2.5M+ cinnamon farmers with data</h3>
@@ -983,12 +1190,12 @@ export default function Home() {
             {/* SUPERVISORS */}
             <div style={{ marginBottom: "4rem" }}>
               <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", fontWeight: 700, color: "var(--forest)", marginBottom: "1.5rem", paddingBottom: "0.75rem", borderBottom: "2px solid rgba(74,124,89,0.2)" }}>Supervisors</h3>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }}>
                 {[
                   { name: "Supervisor - Ms. Suranjini Silva", role: "Senior Lecturer", dept: "Department of Information Technology", image: "/assets/supervisor.jpg" },
                   { name: "Co-Supervisor - Ms. Narmada Gamage", role: "Lecturer", dept: "Department of Information Technology", image: "/assets/assistant supervisor.jpg" }
                 ].map((sup, i) => (
-                  <div key={i} style={{ background: "var(--white)", border: "1px solid rgba(74,124,89,0.15)", borderRadius: "12px", padding: "2rem", display: "flex", alignItems: "center", gap: "1.5rem" }}>
+                  <div key={i} style={{ background: "var(--white)", border: "1px solid rgba(74,124,89,0.15)", borderRadius: "12px", padding: "2rem", display: "flex", flexDirection: "column", alignItems: "center", gap: "1.5rem", textAlign: "center" }}>
                     <img src={sup.image} alt={sup.name} style={{ width: "80px", height: "80px", borderRadius: "50%", objectFit: "cover", objectPosition: "center", flexShrink: 0 }} />
                     <div>
                       <h4 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.1rem", fontWeight: 700, color: "var(--forest)", marginBottom: "0.3rem" }}>{sup.name}</h4>
@@ -1003,11 +1210,11 @@ export default function Home() {
             {/* RESEARCH TEAM */}
             <div>
               <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.2rem", fontWeight: 700, color: "var(--forest)", marginBottom: "1.5rem", paddingBottom: "0.75rem", borderBottom: "2px solid rgba(74,124,89,0.2)" }}>Research Team</h3>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "2rem" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2rem" }}>
                 {members.map((m, i) => {
                   return (
                     <div className="team-card" key={i} style={{ background: "var(--white)", border: "1px solid rgba(74,124,89,0.15)", borderRadius: "12px", padding: "1.5rem" }}>
-                      <div className="team-card-header" style={{ display: "flex", gap: "1rem", alignItems: "flex-start" }}>
+                      <div className="team-card-header" style={{ display: "flex", flexDirection: "column", gap: "1rem", alignItems: "center", textAlign: "center" }}>
                         <img src={m.image} alt={m.name} style={{ width: "80px", height: "80px", borderRadius: "50%", objectFit: "cover", flexShrink: 0 }} />
                         <div style={{ flex: 1 }}>
                           <div className="team-id">{m.id}</div>
@@ -1016,14 +1223,12 @@ export default function Home() {
                           <div style={{ fontSize: "0.82rem", color: "#2e7d32", fontWeight: 600, marginTop: "0.25rem" }}>{m.jobTitle}</div>
                         </div>
                       </div>
-                      <div style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: "1px solid rgba(74,124,89,0.1)", display: "flex", gap: "1rem", alignItems: "center" }}>
-                        <a href={`mailto:${m.email}`} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontSize: "0.85rem", color: "#2e7d32", textDecoration: "none", fontWeight: 500 }} title="Email">
+                      <div style={{ marginTop: "1rem", paddingTop: "1rem", borderTop: "1px solid rgba(74,124,89,0.1)", display: "flex", flexDirection: "column", gap: "0.75rem", alignItems: "center" }}>
+                        <a href={`mailto:${m.email}`} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontSize: "0.85rem", color: "#2e7d32", textDecoration: "none", fontWeight: 500, textAlign: "center" }} title="Email">
                           <span>✉</span>
                           <span>{m.email}</span>
                         </a>
-                      </div>
-                      <div style={{ marginTop: "0.75rem", display: "flex", gap: "1rem", alignItems: "center" }}>
-                        <a href={m.linkedin} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontSize: "0.85rem", color: "#2e7d32", textDecoration: "none", fontWeight: 500 }} title="LinkedIn">
+                        <a href={m.linkedin} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", fontSize: "0.85rem", color: "#2e7d32", textDecoration: "none", fontWeight: 500, textAlign: "center" }} title="LinkedIn">
                           <span>in</span>
                           <span>LinkedIn Profile</span>
                         </a>
@@ -1084,7 +1289,7 @@ export default function Home() {
             ))}
           </div>
 
-          <div style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1.5rem" }}>
+          <div style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem" }}>
             {[
               { num: "200+", label: "Days Worked" },
               { num: "10", label: "Documents" },
@@ -1108,7 +1313,7 @@ export default function Home() {
           <p className="section-desc">Complete collection of project proposals, presentations, research papers, and reports documenting the CinoGrow research journey.</p>
           <div className="divider" />
 
-          <div style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "2rem", gridAutoRows: "auto" }}>
+          <div style={{ marginTop: "4rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "2rem", gridAutoRows: "auto" }}>
             {documents.map((doc, i) => (
               <div
                 key={i}
